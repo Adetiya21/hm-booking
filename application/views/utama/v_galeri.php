@@ -38,8 +38,9 @@
 		</div>
 		
 		<div class="pagination flex-c-m flex-w p-l-15 p-r-15 m-t-24 m-b-50">
-			<a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
+			<?php echo $halaman; ?> <!--Memanggil variable pagination-->
+			<!-- <a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
 			<a href="#" class="item-pagination flex-c-m trans-0-4">2</a>
-			<a href="#" class="item-pagination flex-c-m trans-0-4">3</a>
+			<a href="#" class="item-pagination flex-c-m trans-0-4">3</a> -->
 		</div>
 	</div>
