@@ -1,0 +1,21 @@
+admin:
+username : admin
+password : admin
+
+user:
+
+user1
+email : user1@user.com
+passw : 12345
+
+user2
+email : user2@user.com
+passw : 12345
+
+
+*catatan:
+
+saat admin menambahkan user dari dashboard admin maka otomatis akun login yang digunakan secara default yaitu:
+
+email : (sesuai inputan admin)
+passw : 12345
