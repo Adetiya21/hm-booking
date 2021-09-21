@@ -54,7 +54,7 @@
 					<div class="social flex-w flex-l-m p-r-20">
 						<a href="<?= $ten->ig ?>" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
 						<a href="<?= $ten->fb ?>" target="_blank"><i class="fa fa-facebook m-l-21" aria-hidden="true"></i></a>
-						<a href="tel:<?= $ten->no_telp ?>" target="_blank"><i class="fa fa-phone m-l-21" aria-hidden="true"></i></a>
+						<a href="https://wa.me/<?= $ten->no_telp ?>" target="_blank"><i class="fa fa-phone m-l-21" aria-hidden="true"></i></a>
 						<button class="btn-show-sidebar m-l-33 trans-0-4"></button>
 					</div>
 				</div>

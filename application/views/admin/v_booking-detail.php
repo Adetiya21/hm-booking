@@ -74,7 +74,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>No HP</label>
-                                                <p style="font-weight: bold;"><a href="tel:<?= $booking->no_hp ?>"><?= $booking->no_hp ?></a></p>
+                                                <p style="font-weight: bold;"><a href="https://wa.me/<?= $booking->no_hp ?>"><?= $booking->no_hp ?></a></p>
                                         </div>
                                         <div class="form-group">
                                             <label>Email</label>

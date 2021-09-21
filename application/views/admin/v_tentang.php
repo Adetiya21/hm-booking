@@ -91,7 +91,7 @@
 									<div class="form-group row">
 										<label class="col-sm-2 col-form-label">No Telp</label>
 										<div class="col-sm-10">
-											<input type="text" class="form-control" value="<?= $tentang->no_telp ?>" name="no_telp" maxlength="13" onkeypress='return check_int(event)'>
+											<input type="text" class="form-control" value="<?= $tentang->no_telp ?>" name="no_telp" maxlength="14" onkeypress='return check_int(event)'>
 										</div>
 									</div>
 									<!-- <div class="form-group row">
