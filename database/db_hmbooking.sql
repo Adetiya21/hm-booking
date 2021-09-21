@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 20 Sep 2021 pada 20.15
+-- Waktu pembuatan: 21 Sep 2021 pada 04.23
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.3
 
@@ -191,7 +191,7 @@ CREATE TABLE `tb_tentang` (
 --
 
 INSERT INTO `tb_tentang` (`id`, `nama`, `logo`, `tentang`, `no_telp`, `ig`, `fb`, `alamat`, `email`) VALUES
-(1, 'HM Wedding', '3f49eebc8dcef6940c422e7192e47e16.png', '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis veritatis assumenda esse officia, dolorem accusantium totam deserunt quas similique consectetur officiis perspiciatis voluptate modi cum voluptatibus fugiat corporis quod eveniet!</p>', '08123456789', '', '', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.', NULL);
+(1, 'HM Project', '086e29307ff19ed03a707993c9a7f95a.png', '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex, quam. Itaque porro laboriosam architecto quidem consequuntur consectetur dicta maxime, non, voluptatum culpa magnam molestiae, eum cum maiores consequatur libero eos.</p>', '08123456789', 'hmproject_art', '', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.', NULL);
 
 --
 -- Indexes for dumped tables
