@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-md-6 p-b-30">
                     <div class="wrap-pic-welcome size2 bo-rad-5 hov-img-zoom m-l-r-auto">
-                        <img src="<?= base_url('assets/images/logo/'.$ten->logo) ?>" alt="IMG-OUR" class="animated animatedFadeInRight fadeInRight">
+                        <img src="<?= base_url('assets/images/logo/'.$ten->logo) ?>" alt="IMG-OUR">
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
             <div class="row">
                 <?php foreach($paket->result() as $key){ ?>
                     <div class="col-md-4">
-                        <div class="pricing__item">
+                        <div class="pricing__item animated animatedFadeInUp fadeInUp">
                             <h5><?= $key->nama ?></h5>
                             <h2>Rp. <?= rupiah($key->harga) ?></h2>
                             <img src="<?= base_url('assets/front-end/') ?>img/icon/pricing-icon.png" alt="" width="100px">
@@ -93,7 +93,7 @@
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-8">
-                    <div class="request__form">
+                    <div class="request__form animated animatedFadeInLeft fadeInLeft">
                         <div class="section-title">
                             <span>Ayo</span>
                             <h2>Booking Sekarang!</h2>
@@ -165,7 +165,7 @@
     </section>
 
     <!-- daftar booking -->
-    <section id="daftarbooking" class="section-review">
+    <section id="daftarbooking" class="section-review animated animatedFadeInRight fadeInRight">
         <div class="title-review t-center m-b-2">
             <span class="tit2 p-l-15 p-r-15">
                 Daftar

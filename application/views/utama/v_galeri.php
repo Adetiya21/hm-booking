@@ -15,7 +15,7 @@
 		<div class="container">
 			<div class="row">
 				<?php foreach($galeri->result() as $key) {?>
-				<div class="col-md-4 isotope-item bo-rad-10 hov-img-zoom m-b-50">
+				<div class="col-md-4 isotope-item bo-rad-10 hov-img-zoom m-b-50 animated animatedFadeInUp fadeInUp">
 					<img src="<?= base_url('assets/images/galeri/'.$key->gambar) ?>" alt="IMG-GALLERY">
 					<div class="overlay-item-gallery trans-0-4 flex-c-m">
 						<a class="btn-show-gallery flex-c-m" href="<?= base_url('assets/images/galeri/'.$key->gambar) ?>" data-lightbox="gallery"><i class="fa fa-search"></i></a>
