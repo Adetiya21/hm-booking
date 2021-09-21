@@ -32,7 +32,8 @@
       <div class="footer__copyright">
         <div class="row">
           <div class="col-lg-12 col-md-12 text-center">
-            <p class="footer__copyright__text">Copyright &copy;<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+            <p class="footer__copyright__text">Copyright &copy;
+              <script>
               document.write(new Date().getFullYear());
             </script> All rights reserved.
           </p>

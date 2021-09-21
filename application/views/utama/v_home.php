@@ -39,7 +39,7 @@
                             <?= $ten->nama ?>
                         </span>
                         <h5 class="tit3 t-center m-b-35 m-t-5">
-                            Wedding Planner
+                            Wedding Photographer
                         </h5>
                         <p class="t-center m-b-22 size3 m-l-r-auto">
                             <?= $ten->tentang ?>

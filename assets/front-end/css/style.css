@@ -526,7 +526,7 @@ a:hover,
 a:focus {
   text-decoration: none;
   outline: none;
-  color: #767b67;
+  color: #1f77af;
 }
 
 ul,
@@ -1076,7 +1076,7 @@ ol {
 }
 
 .request__form .section-title {
-  background: #767b67;
+  background: #1f77af;
   padding: 60px 145px 40px;
   border-radius: 10px 10px 0 0;
   margin-bottom: 0;
@@ -1190,7 +1190,7 @@ ol {
 .latest__item ul li {
   list-style: none;
   font-size: 17px;
-  color: #767b67;
+  color: #1f77af;
   font-style: italic;
   font-family: "Cormorant Garamond", serif;
   display: inline-block;
@@ -1224,7 +1224,7 @@ ol {
   Footer
 -----------------------*/
 .footer {
-  background: #3b3e33;
+  background: #1b476d;
   padding-top: 65px;
 }
 
@@ -1281,7 +1281,7 @@ ol {
 }
 .footer__subscribe__form form button {
   font-size: 18px;
-  color: #767b67;
+  color: #1f77af;
   position: absolute;
   right: 0;
   top: 0;
@@ -1350,10 +1350,10 @@ ol {
   letter-spacing: 0.5px;
 }
 .footer__copyright__text i {
-  color: #767b67;
+  color: #1f77af;
 }
 .footer__copyright__text a {
-  color: #767b67;
+  color: #1f77af;
 }
 
 .footer__copyright__widget {
@@ -1444,7 +1444,7 @@ ol {
   Testimonial
 -----------------------*/
 .testimonial {
-  background: #f6f7f1;
+  background: #ecf9ff;
   padding-bottom: 40px;
 }
 
@@ -1527,7 +1527,7 @@ ol {
   margin-right: 10px;
 }
 .testimonial__carousel.owl-carousel .owl-dots button.active {
-  background: #767b67;
+  background: #1f77af;
 }
 .testimonial__carousel.owl-carousel .owl-dots button:last-child {
   margin-right: 0;
@@ -1558,7 +1558,7 @@ ol {
 .team__item__text span {
   font-size: 22px;
   font-family: "Cormorant Garamond", serif;
-  color: #767b67;
+  color: #1f77af;
   display: block;
   font-style: italic;
   margin-bottom: 12px;
@@ -1618,7 +1618,7 @@ ol {
   Pricing
 -----------------------*/
 .pricing {
-  background: #f6f7f1;
+  background: #ecf9ff;
   height: 900px;
 }
 
@@ -1641,7 +1641,7 @@ ol {
   -webkit-box-shadow: 0px 5px 44px rgba(154, 87, 87, 0.2);
           box-shadow: 0px 5px 44px rgba(154, 87, 87, 0.2);
   border-radius: 10px;
-  background: #767b67;
+  background: #1f77af;
 }
 .pricing__item:hover:after {
   opacity: 1;
@@ -1657,7 +1657,7 @@ ol {
 }
 .pricing__item:hover .primary-btn {
   background: #ffffff;
-  color: #767b67;
+  color: #1f77af;
 }
 .pricing__item:after {
   position: absolute;
@@ -1684,7 +1684,7 @@ ol {
   transition: all, 0.2s;
 }
 .pricing__item h2 {
-  color: #767b67;
+  color: #1f77af;
   font-size: 2em;
   margin-bottom: 16px;
   -webkit-transition: all, 0.2s;
@@ -1777,7 +1777,7 @@ ol {
 .blog__item__title ul li {
   font-size: 17px;
   font-family: "Cormorant Garamond", serif;
-  color: #767b67;
+  color: #1f77af;
   font-style: italic;
   list-style: none;
   display: inline-block;
@@ -1834,19 +1834,19 @@ ol {
 }
 .blog__item__text a {
   font-size: 13px;
-  color: #767b67;
+  color: #1f77af;
   letter-spacing: 4px;
   text-transform: uppercase;
 }
 
 .blog__quote {
-  background: #f6f7f1;
+  background: #ecf9ff;
   padding: 40px 40px 35px;
   position: relative;
   margin-bottom: 55px;
 }
 .blog__quote p {
-  color: #767b67;
+  color: #1f77af;
   font-size: 24px;
   font-family: "Cormorant Garamond", serif;
   line-height: 39px;
@@ -1859,7 +1859,7 @@ ol {
 }
 .blog__quote span {
   display: inline-block;
-  color: #767b67;
+  color: #1f77af;
   font-size: 120px;
   font-family: "Cormorant Garamond", serif;
   position: absolute;
@@ -1899,7 +1899,7 @@ ol {
   display: inline-block;
   font-size: 20px;
   font-weight: 500;
-  color: #767b67;
+  color: #1f77af;
   height: 45px;
   width: 45px;
   background: transparent;
@@ -1914,7 +1914,7 @@ ol {
   margin-right: 0;
 }
 .pagination__option a:hover {
-  background: #767b67;
+  background: #1f77af;
   color: #ffffff;
 }
 .pagination__option a span {
@@ -1976,7 +1976,7 @@ ol {
 }
 .blog__sidebar__item form button {
   font-size: 15px;
-  color: #767b67;
+  color: #1f77af;
   position: absolute;
   right: -5px;
   top: 10px;
@@ -2029,7 +2029,7 @@ ol {
   font-size: 15px;
   color: #666666;
   padding: 9px 15px 7px;
-  background: #f6f7f1;
+  background: #ecf9ff;
   margin-right: 11px;
   margin-bottom: 15px;
 }
@@ -2078,7 +2078,7 @@ ol {
 
 .blog__details__tags span {
   font-size: 17px;
-  color: #767b67;
+  color: #1f77af;
   margin-right: 12px;
   display: inline-block;
 }
@@ -2087,7 +2087,7 @@ ol {
   font-size: 15px;
   color: #666666;
   padding: 9px 15px 7px;
-  background: #f6f7f1;
+  background: #ecf9ff;
   margin-right: 11px;
   margin-bottom: 15px;
 }
@@ -2097,7 +2097,7 @@ ol {
 }
 .blog__details__social span {
   font-size: 17px;
-  color: #767b67;
+  color: #1f77af;
   margin-right: 12px;
   display: inline-block;
 }
@@ -2107,7 +2107,7 @@ ol {
   font-size: 16px;
   height: 40px;
   width: 40px;
-  background: #f6f7f1;
+  background: #ecf9ff;
   border-radius: 50%;
   line-height: 40px;
   text-align: center;
@@ -2133,7 +2133,7 @@ ol {
   text-align: right;
 }
 .blog__details__btns__item i {
-  color: #767b67;
+  color: #1f77af;
   font-size: 20px;
   font-weight: 600;
 }

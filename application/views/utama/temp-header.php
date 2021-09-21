@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- style -->
-<link rel="icon" type="image/png" href="images/icons/xfavicon.png.pagespeed.ic.xpyrrHno5U.png" />
+<link rel="icon" type="image/x-icon" href="<?= base_url('assets/front-end/img/favicon.ico') ?>" />
 
 <link rel="stylesheet" type="text/css" href="<?= base_url('assets/front-end/css/') ?>bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="<?= base_url('assets/front-end/css/') ?>main-style.css">

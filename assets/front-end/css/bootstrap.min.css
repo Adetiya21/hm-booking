@@ -3601,8 +3601,8 @@ tbody.collapse.show {
 .page-item.active .page-link {
   z-index: 2;
   color: #fff;
-  background-color: #767b67;
-  border-color: #767b67;
+  background-color: #1f78af;
+  border-color: #1f78af;
 }
 .page-item.disabled .page-link {
   color: #868e96;
@@ -3616,7 +3616,7 @@ tbody.collapse.show {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #767b67;
+  color: #1f78af;
   background-color: #fff;
   border: 1px solid #ddd;
 }
@@ -16713,7 +16713,7 @@ body.lb-disable-scrolling {
   font-family: Courgette;
   font-size: 30px;
   line-height: 1.2;
-  color: #767b67;
+  color: #1f78af;
 }
 .tit3 {
   font-family: Poppins;
@@ -16801,7 +16801,7 @@ body.lb-disable-scrolling {
   font-weight: 400;
   font-size: 12px;
   line-height: 1.1;
-  color: #ec1d25;
+  color: #1f77af;
   text-transform: uppercase;
 }
 .txt4 {
@@ -16832,7 +16832,7 @@ body.lb-disable-scrolling {
   font-family: Montserrat;
   font-weight: 700;
   font-size: 50px;
-  color: #ec1d25;
+  color: #1f77af;
   line-height: 1.1;
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -16892,7 +16892,7 @@ body.lb-disable-scrolling {
   font-family: Montserrat;
   font-weight: 400;
   font-size: 13px;
-  color: #ec1d25;
+  color: #1f77af;
   line-height: 1.7;
 }
 .txt16 {
@@ -16925,7 +16925,7 @@ body.lb-disable-scrolling {
   font-family: Montserrat;
   font-weight: 400;
   font-size: 14px;
-  color: #767b67;
+  color: #1f78af;
   line-height: 1.2;
   text-transform: uppercase;
 }
@@ -16966,7 +16966,7 @@ body.lb-disable-scrolling {
   font-weight: 400;
   font-size: 15px;
   line-height: 1.7;
-  color: #ec1d25;
+  color: #1f77af;
 }
 .txt25 {
   font-family: Montserrat;
@@ -17058,7 +17058,7 @@ body.lb-disable-scrolling {
   line-height: 1.8;
 }
 .color0 {
-  color: #ec1d25;
+  color: #1f77af;
 }
 .color1 {
   color: #222;
@@ -17067,7 +17067,7 @@ body.lb-disable-scrolling {
   color: #ccc;
 }
 .color0-hov:hover {
-  color: #ec1d25;
+  color: #1f77af;
 }
 .m-10 {
   margin: 10px;
@@ -17217,7 +17217,7 @@ body.lb-disable-scrolling {
   background-color: #111;
 }
 .bg0-hov:hover {
-  background-color: #ec1d25;
+  background-color: #1f77af;
 }
 .bg1-overlay {
   background-color: rgba(0, 0, 0, 0.35);
@@ -17226,7 +17226,7 @@ body.lb-disable-scrolling {
   border: 2px solid #d9d9d9;
 }
 .bo4 {
-  border: 4px solid #ec1d25;
+  border: 4px solid #1f77af;
 }
 .bo5-b {
   border-bottom: 1px solid #e6e6e6;
@@ -17275,15 +17275,15 @@ body.lb-disable-scrolling {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
 }
 .bg1-pattern {
-  background-image: url(images/icons/xpattern1.png.pagespeed.ic.BnKeXGrll7.png);
+  /*background-image: url(../images/icons/xpattern1.png.pagespeed.ic.BnKeXGrll7.png);*/
   background-repeat: repeat;
 }
 .bg2-pattern {
-  background-image: url(images/icons/pattern2.png);
+  /*background-image: url(../images/icons/pattern2.png);*/
   background-repeat: repeat;
 }
 .bg3-pattern {
-  background-image: url(images/icons/xpattern3.png.pagespeed.ic.dzZRDyA2eX.png);
+  /*background-image: url(../images/icons/xpattern3.png.pagespeed.ic.dzZRDyA2eX.png);*/
   background-repeat: repeat;
 }
 .hov1:hover {
