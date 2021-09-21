@@ -13,14 +13,14 @@
           </div>
         </div>
         <div class="col-lg-1 col-md-1"></div>
-        <div class="col-lg-3 col-md-3 col-sm-6">
+        <div class="col-lg-4 col-md-4 col-sm-6">
           <div class="footer__widget">
             <h5>Kontak Kami</h5>
             <p><?= $ten->alamat ?></p>
 
           </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-6">
+        <div class="col-lg-3 col-md-3 col-sm-6">
           <div class="footer__widget">
             <div class="footer__social">
               <a href="htps://instagram.com/<?= $ten->fb ?>"><i class="fa fa-facebook"></i></a>
