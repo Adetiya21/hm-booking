@@ -22,9 +22,9 @@
         <div class="col-lg-4 col-md-4 col-sm-6">
           <div class="footer__widget">
             <div class="footer__social">
-              <a href="<?= $ten->fb ?>"><i class="fa fa-facebook"></i></a>
-              <a href="<?= $ten->ig ?>"><i class="fa fa-instagram"></i></a>
-              <a href="tel:<?= $ten->no_telp ?>"><i class="fa fa-phone"></i></a>
+              <a href="htps://instagram.com/<?= $ten->fb ?>"><i class="fa fa-facebook"></i></a>
+              <a href="htps://facebook.com/<?= $ten->ig ?>"><i class="fa fa-instagram"></i></a>
+              <a href="https://wa.me/<?= $ten->no_telp ?>"><i class="fa fa-phone"></i></a>
             </div>
           </div>
         </div>
