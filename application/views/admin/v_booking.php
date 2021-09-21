@@ -387,6 +387,11 @@
                                     <textarea name="alamat_tinggal" class="form-control" placeholder="Alamat Tempat Tinggal" required /></textarea>
                                     <span class="help-block"></span>
                                 </div>
+                                <div class="form-group">
+                                    <label >Alamat Acara</label>
+                                    <textarea name="alamat_acara" class="form-control" placeholder="Alamat Acara" required /></textarea>
+                                    <span class="help-block"></span>
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -395,16 +400,20 @@
                                     <span class="help-block"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label >Alamat Acara</label>
-                                    <textarea name="alamat_acara" class="form-control" placeholder="Alamat Acara" required /></textarea>
-                                    <span class="help-block"></span>
-                                </div>
-                                <div class="form-group">
                                     <label >Status</label>
                                     <select name="status" class="form-control" required/>
                                         <option>--- Pilih Status ---</option>
                                         <option value="Belum Selesai">Belum Selesai</option>
                                         <option value="Selesai">Selesai</option>
+                                    </select>
+                                    <span class="help-block"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label >Nominal DP</label>
+                                    <select name="dp" class="form-control" required />
+                                        <option>--- Pilih Nominal DP ---</option>
+                                        <option value="500000">Rp 500.000</option>
+                                        <option value="1000000">Rp 1.000.000</option>
                                     </select>
                                     <span class="help-block"></span>
                                 </div>

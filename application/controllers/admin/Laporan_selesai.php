@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Laporan extends CI_Controller {
+class Laporan_selesai
+ extends CI_Controller {
 
 	function __construct()
 	{
@@ -13,17 +14,23 @@ class Laporan extends CI_Controller {
 			echo 'window.location.assign("'.site_url("admin/welcome").'")
 			</script>';
 		}
-		$this->load->model('m_laporan','Model');  //load model m_laporan
+		$this->load->model('m_laporan_selesai','Model');  //load model m_laporan
 		$this->load->helper('rupiah');  //load helper rupiah
 	}
 
 	// fun halaman pesanan
 	public function index()
 	{
-		$data['title'] = 'Data Laporan';
+		// $query = $this->db->where( 'tb_booking.status', 'Selesai');   //filter berdasarkan status selesai
+  //       $query = $this->db->select('tb_booking.id, tb_booking.id_paket ,tb_booking.nama, tb_booking.tgl_acara, tb_paket.nama as nama_paket,sum(DISTINCT tb_paket.harga) as harga');  //load database
+  //       $query = $this->db->from('tb_booking');  //nama tabel
+  //       $query = $this->db->join('tb_paket', 'tb_booking.id_paket = tb_paket.id');
+  //       $query = $this->db->get();
+  //       $data['laporan'] = $query->row();
+        $data['title'] = 'Data Laporan Selesai';
         // fun view
 		$this->load->view('admin/temp-header',$data);
-		$this->load->view('admin/v_laporan');
+		$this->load->view('admin/v_laporan-sl');
 		$this->load->view('admin/temp-footer');
 	}
 
@@ -38,10 +45,17 @@ class Laporan extends CI_Controller {
 		}
 		$data['bln'] = $blnn;  //deklarasi bulan
 		$data['blnn'] = $bulan;
-		$data['title'] = 'Data Laporan Bulan '.$blnn;
+		// $query = $this->db->where("DATE_FORMAT(tb_booking.tgl_acara,'%m')", $bulan);  //filter berdasarkan bulan
+  //       $query = $this->db->where("tb_booking.status", 'Selesai');   //filter berdasarkan status selesai
+  //       $query = $this->db->select('tb_booking.id, tb_booking.id_paket ,tb_booking.nama, tb_booking.tgl_acara, tb_paket.nama as nama_paket,sum(DISTINCT tb_paket.harga) as harga');  //load database
+  //       $query = $this->db->from('tb_booking');  //nama tabel
+  //       $query = $this->db->join('tb_paket', 'tb_booking.id_paket = tb_paket.id');
+  //       $query = $this->db->get();
+  //       $data['laporan'] = $query->row();
+        $data['title'] = 'Data Laporan Selesai Bulan '.$blnn;
         // fun view
         $this->load->view('admin/temp-header',$data);
-		$this->load->view('admin/v_laporan-bulan');
+		$this->load->view('admin/v_laporan-sl-bulan');
 		$this->load->view('admin/temp-footer');
 	}
 
@@ -63,5 +77,5 @@ class Laporan extends CI_Controller {
 
 }
 
-/* End of file Laporan.php */
-/* Location: ./application/controllers/admin/Laporan.php */
+/* End of file Laporan_selesai.php */
+/* Location: ./application/controllers/admin/Laporan_selesai.php */

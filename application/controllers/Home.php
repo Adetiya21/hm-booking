@@ -46,6 +46,7 @@ class Home extends CI_Controller {
 			array('field' => 'tgl_acara','label' => 'Tanggal Acara','rules' => 'required'),
 			array('field' => 'alamat_tinggal','label' => 'Alamat Tempat Tinggal','rules' => 'required'),
 			array('field' => 'alamat_acara','label' => 'Alamat Tempat Acara','rules' => 'required'),
+			array('field' => 'dp','label' => 'Nominal DP','rules' => 'required'),
 		);
 		$this->form_validation->set_rules($config);
 		if ($this->form_validation->run() == FALSE)
@@ -78,6 +79,8 @@ class Home extends CI_Controller {
 					'tgl_booking' => date('Y-m-d H:i:s'),
 					'alamat_tinggal' => $this->input->post('alamat_tinggal'),
 					'alamat_acara' => $this->input->post('alamat_acara'),
+					'dp' => $this->input->post('dp'),
+					'total' => $this->input->post('dp'),
 					'status' => 'Belum Selesai',
 				);
 				

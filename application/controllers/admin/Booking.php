@@ -103,6 +103,8 @@ class Booking extends CI_Controller {
 				'alamat_tinggal' => $this->input->post('alamat_tinggal'),
 				'alamat_acara' => $this->input->post('alamat_acara'),
 				'status' => $this->input->post('status'),
+				'dp' => $this->input->post('dp'),
+				'total' => $this->input->post('dp'),
 			);
 			// upload bukti_transfer
 			$bukti_transfer = $_FILES['bukti_transfer']['name'];
@@ -150,12 +152,30 @@ class Booking extends CI_Controller {
 			$where  = array('id' => $this->input->post('id'));  //filter berdasarkan id
 			$query = $this->DButama->GetDBWhere($this->table,$where);
 			$row = $query->row();
-			$data = array(
-				'status' => $this->input->post('status')
-			);
-			// fun update
-			$this->DButama->UpdateDB($this->table,$where,$data);
-			echo json_encode(array("status" => TRUE));
+
+			$whereHarga  = array('id' => $row->id_paket);  //filter berdasarkan id
+			$queryHarga = $this->DButama->GetDBWhere('tb_paket',$whereHarga);
+			$rowHarga = $queryHarga->row();
+			
+			$status=$this->input->post('status');
+			if ($status=='Selesai') {
+				$data = array(
+					'total' => $rowHarga->harga,
+					'status' => $status
+				);
+				// fun update
+				$this->DButama->UpdateDB($this->table,$where,$data);
+				echo json_encode(array("status" => TRUE));
+			} else {
+				$data = array(
+					'total' => $row->dp,
+					'status' => $status
+				);
+				// fun update
+				$this->DButama->UpdateDB($this->table,$where,$data);
+				echo json_encode(array("status" => TRUE));
+			}
+			
 		}
 	}
 

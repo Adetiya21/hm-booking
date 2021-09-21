@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Laporan extends CI_Controller {
+class Laporan_belum_selesai extends CI_Controller {
 
 	function __construct()
 	{
@@ -13,17 +13,17 @@ class Laporan extends CI_Controller {
 			echo 'window.location.assign("'.site_url("admin/welcome").'")
 			</script>';
 		}
-		$this->load->model('m_laporan','Model');  //load model m_laporan
+		$this->load->model('m_laporan_belum_selesai','Model');  //load model m_laporan
 		$this->load->helper('rupiah');  //load helper rupiah
 	}
 
 	// fun halaman pesanan
 	public function index()
 	{
-		$data['title'] = 'Data Laporan';
+        $data['title'] = 'Data Laporan Belum Selesai';
         // fun view
 		$this->load->view('admin/temp-header',$data);
-		$this->load->view('admin/v_laporan');
+		$this->load->view('admin/v_laporan-bl');
 		$this->load->view('admin/temp-footer');
 	}
 
@@ -38,10 +38,10 @@ class Laporan extends CI_Controller {
 		}
 		$data['bln'] = $blnn;  //deklarasi bulan
 		$data['blnn'] = $bulan;
-		$data['title'] = 'Data Laporan Bulan '.$blnn;
+        $data['title'] = 'Data Laporan Belum Selesai Bulan '.$blnn;
         // fun view
         $this->load->view('admin/temp-header',$data);
-		$this->load->view('admin/v_laporan-bulan');
+		$this->load->view('admin/v_laporan-bl-bulan');
 		$this->load->view('admin/temp-footer');
 	}
 
@@ -63,5 +63,5 @@ class Laporan extends CI_Controller {
 
 }
 
-/* End of file Laporan.php */
-/* Location: ./application/controllers/admin/Laporan.php */
+/* End of file Laporan_belum_selesai.php */
+/* Location: ./application/controllers/admin/Laporan_belum_selesai.php */

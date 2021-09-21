@@ -29,12 +29,17 @@ class Home extends CI_Controller {
 		$data['paket'] = $this->DButama->GetDB('tb_paket')->num_rows();  //menghitung jumlah isi tabel paket
 		$data['booking'] = $this->DButama->GetDB('tb_booking')->num_rows();  //menghitung jumlah isi tabel booking
 
+		$query = $this->db->select('sum(total) as total');  //load database
+        $query = $this->db->from('tb_booking');  //nama tabel
+        $query = $this->db->get();
+        $data['total'] = $query->row();
+
 		//menghitung jumlah pesanan bersadarkan status booking
 		$data['bs'] = $this->DButama->GetDBWhere('tb_booking', array('status' => 'Belum Selesai'))->num_rows();
 		$data['si'] = $this->DButama->GetDBWhere('tb_booking', array('status' => 'Selesai'))->num_rows();
 
 		//load tabel booking
-		$query = $this->db->select('tb_booking.id, tb_booking.nama,tb_booking.tgl_acara,tb_booking.tgl_booking,, tb_booking.no_hp, tb_paket.nama as nama_paket, tb_paket.harga'); 
+		$query = $this->db->select('tb_booking.id, tb_booking.nama, tb_booking.tgl_acara, tb_booking.tgl_booking, tb_booking.no_hp, tb_paket.nama as nama_paket, tb_paket.harga'); 
         $query = $this->db->from('tb_booking');
         $query = $this->db->join('tb_paket', 'tb_booking.id_paket = tb_paket.id');
         $query = $this->db->order_by('tb_booking.tgl_acara', 'desc');   //mengurutkan data berdasarkan tgl terbaru

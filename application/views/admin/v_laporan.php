@@ -2,6 +2,7 @@
 <script>
     $(document).ready(function() {
       $('.laporan').addClass('active');
+      $('.semua').addClass('active');
   	});
 
     function check_int(evt) {
@@ -21,7 +22,7 @@
                                 <div class="page-header-title">
                                     <div class="d-inline">
                                         <h4>LAPORAN</h4>
-                                        <span>Berikut daftar laporan semua data.</span>
+                                        <span>Berikut semua data laporan.</span>
                                     </div>
                                 </div>
                             </div>
@@ -81,14 +82,16 @@
                                             <th width="100px">Tanggal Acara</th>
                                             <th>Nama Catin</th>
                                             <th>Paket</th>
+                                            <th>DP</th>
                                             <th>Total</th>
+                                            <th>Status</th>
                                             <th width="10%">#</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         </tbody>
                                         <tfoot>
-                                            <tr><th colspan="6" class="text-right"><h5>Total</h5> </th></tr>
+                                            <tr><th colspan="6" class="text-right"><h5>Total</h5></th><th colspan="2"></th></tr>
                                         </tfoot>
                                     </table>
                                 </div>
@@ -160,7 +163,16 @@
         },
         {"data": "nama"},
         {"data": "nama_paket"},
-        {"data": "harga",
+        {"data": "dp",
+            render: function(data) { 
+                var reverse = data.toString().split('').reverse().join(''),
+                ribuan  = reverse.match(/\d{1,3}/g);
+                ribuan  = ribuan.join('.').split('').reverse().join('');
+                      return 'Rp. '+ribuan+',-';
+                },
+                defaultContent: 'dp'
+        },
+        {"data": "total",
             render: function(data) { 
                 var reverse = data.toString().split('').reverse().join(''),
                 ribuan  = reverse.match(/\d{1,3}/g);
@@ -168,6 +180,16 @@
                       return 'Rp. '+ribuan+',-';
                 },
                 defaultContent: 'total'
+        },
+        {"data": "status",
+            render: function(data) { 
+                if (data=='Belum Selesai') {
+                    return '<label class="label label-sm label-warning text-center" style="width:90%">'+data+'</label>'
+                } else if (data=='Selesai') {
+                    return '<label class="label label-sm label-info text-center" style="width:90%">'+data+'</label>'
+                }
+            },
+            defaultContent: 'status'
         },
         {"data": "view","orderable": false}
         ],
@@ -192,7 +214,7 @@
 
             // Total over all pages
             total = api
-            .column(4)
+            .column(5)
             .data()
             .reduce( function (a, b) {
                return intVal(a) + intVal(b);
@@ -200,7 +222,7 @@
 
             // Total over this page
             pageTotal = api
-            .column( 4, { page: 'current'} )
+            .column( 5, { page: 'current'} )
             .data()
             .reduce( function (a, b) {
                return intVal(a) + intVal(b);
@@ -228,7 +250,7 @@
 
 
             // Update footer
-            $( api.column( 4 ).footer() ).html(
+            $( api.column( 5 ).footer() ).html(
                'Rp. '+rupiah +' (Rp. '+ rupiah1 +' total)'
                );
         },

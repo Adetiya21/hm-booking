@@ -126,10 +126,13 @@
                                 </div>
                                 <div class="col-md-6">
                                     <span class="txt9">Paket</span>
-                                    <select name="id_paket" class="size12 bo-rad-5 m-t-3 m-b-23" style="color:#666666;padding:10px" required />
+                                    <select name="id_paket" class="size12 bo-rad-5 m-t-3 m-b-23" style="color:#666666;padding:10px" onchange="changeValue(this.value)" required />
                                         <option>--- Pilih Paket ---</option>
-                                        <?php foreach($paket->result() as $key){ ?>
+                                        <?php 
+                                        $jsArray = "var dtPaket = new Array();\n";
+                                        foreach($paket->result() as $key){ ?>
                                         <option value="<?= $key->id ?>"><?= $key->nama ?></option>
+                                        <?php $jsArray .= "dtPaket['" . $key->id . "'] = { harga:'".addslashes($key->harga)."'};\n"; ?>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -141,13 +144,27 @@
                                 </div>
                                 <div class="col-md-6">
                                     <span class="txt9">Alamat Tinggal</span>
-                                        <textarea class="bo-rad-5 sizefull txt10 p-l-20" name="alamat_tinggal" placeholder="Masukkan Alamat Tempat Tinggal" style="margin-bottom:12px;" required /></textarea>
+                                    <textarea class="bo-rad-5 sizefull txt10 p-l-20" name="alamat_tinggal" placeholder="Masukkan Alamat Tempat Tinggal" style="margin-bottom:12px;" required /></textarea>
                                 </div>
                                 <div class="col-md-6">
                                     <span class="txt9">Alamat Acara</span>
-                                    <textarea class="bo-rad-5 sizefull txt10 p-l-20" name="alamat_acara" placeholder="Masukkan Alamat Tempat Acara" style="margin-bottom:0;" required /></textarea>
+                                    <textarea class="bo-rad-5 sizefull txt10 p-l-20" name="alamat_acara" placeholder="Masukkan Alamat Tempat Acara" style="margin-bottom:12px;" required /></textarea>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <span class="txt9">Nominal DP</span>
+                                    <select name="dp" id="dp" class="size12 bo-rad-5 m-t-3" style="color:#666666;padding:10px" required />
+                                        <option>--- Pilih Nominal DP ---</option>
+                                        <option value="500000">Rp 500.000</option>
+                                        <option value="1000000">Rp 1.000.000</option>
+                                    </select>
+                                    <div class="form-group" id="sisa" style="display: none;">
+                                        <p style="font-size:0.8em;margin-top:5px;" id="nom">Nominal pembayaran saat hari-H</p>
+                                    </div>
+                                    <div class="form-group" id="sisa1" style="display: none;">
+                                        <p style="font-size:0.8em;margin-top:5px;" id="nom1">Nominal pembayaran saat hari-H</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
                                     <span class="txt9">Bukti Transfer</span>
                                     <div class="size12 bo-rad-5 m-t-3 m-b-23">
                                         <input class="bo-rad-5 sizefull txt10 p-l-20" type="file" name="bukti_transfer" required />
@@ -249,6 +266,47 @@
             <div class="wrap-slick2-dots"></div>
         </div>
     </section> -->
+
+<script type="text/javascript">
+ <?php echo $jsArray; ?> 
+    var paket = 0;
+    var dp1 = 500000;
+    var dp2 = 1000000;
+    var total = 0;
+    function changeValue(item){ 
+        // document.getElementById('nom').textContent = dtPaket[item].harga; 
+        paket = dtPaket[item].harga;
+    };
+
+    document.getElementById('dp').addEventListener('change', function () {
+        var style = this.value == '500000' ? 'block' : 'none';
+        document.getElementById('sisa').style.display = style;
+        total = paket-dp1;
+        var reverse = total.toString().split('').reverse().join(''),
+        ribuan  = reverse.match(/\d{1,3}/g);
+        ribuan  = ribuan.join('.').split('').reverse().join('');
+        document.getElementById('nom').textContent = 'Nominal pembayaran saat hari-H Rp '+ribuan;
+        
+    });
+
+    document.getElementById('dp').addEventListener('change', function () {
+        var style = this.value == '1000000' ? 'block' : 'none';
+        document.getElementById('sisa1').style.display = style;
+        total = paket-dp2;
+        var reverse = total.toString().split('').reverse().join(''),
+        ribuan  = reverse.match(/\d{1,3}/g);
+        ribuan  = ribuan.join('.').split('').reverse().join('');
+        document.getElementById('nom1').textContent = 'Nominal pembayaran saat hari-H Rp '+ribuan;
+        
+    });
+</script>
+
+<!-- <script type="text/javascript">
+    document.getElementById('dp').addEventListener('change', function () {
+        var style = this.value == '1000000' ? 'block' : 'none';
+        document.getElementById('sisa').style.display = style;
+    });
+</script> -->
 
 <!-- DataTables -->
 <script src="<?= base_url() ?>assets/front-end/data/vendors/datatables.net/js/jquery.dataTables.min.js"></script>

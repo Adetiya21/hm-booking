@@ -110,7 +110,7 @@
 									</div>
 								</div>
 							</a>
-							<div class="col-md-4">
+							<div class="col-md-3">
 								<div class="card">
 									<div class="card-block">
 										<div class="row align-items-center">
@@ -135,12 +135,12 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-3">
 								<div class="card">
 									<div class="card-block">
 										<div class="row align-items-center">
 											<div class="col-12">
-												<h4 class="text-c-blue f-w-600"><?= $bs ?></h4>
+												<h4 class="text-c-pink f-w-600"><?= $bs ?></h4>
 												<h6 class="text-muted m-b-0">Data</h6>
 											</div>
 											<!-- <div class="col-4 text-right">
@@ -148,7 +148,7 @@
 											</div> -->
 										</div>
 									</div>
-									<div class="card-footer bg-c-blue">
+									<div class="card-footer bg-c-pink">
 										<div class="row align-items-center">
 											<div class="col-12">
 												<p class="text-white m-b-0">Belum Selesai</p>
@@ -160,13 +160,38 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-3">
 								<div class="card">
 									<div class="card-block">
 										<div class="row align-items-center">
 											<div class="col-12">
-												<h4 class="text-c-green f-w-600"><?= $si ?></h4>
+												<h4 class="text-c-blue f-w-600"><?= $si ?></h4>
 												<h6 class="text-muted m-b-0">Data</h6>
+											</div>
+											<!-- <div class="col-4 text-right">
+												<i class="feather icon-bar-chart f-28"></i>
+											</div> -->
+										</div>
+									</div>
+									<div class="card-footer bg-c-blue">
+										<div class="row align-items-center">
+											<div class="col-12">
+												<p class="text-white m-b-0">Selesai</p>
+											</div>
+											<!-- <div class="col-3 text-right">
+												<i class="feather icon-trending-up text-white f-16"></i>
+											</div> -->
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="card">
+									<div class="card-block">
+										<div class="row align-items-center">
+											<div class="col-12">
+												<h4 class="text-c-green f-w-600">Rp <?= rupiah($total->total); ?></h4>
+												<h6 class="text-muted m-b-0">Total</h6>
 											</div>
 											<!-- <div class="col-4 text-right">
 												<i class="feather icon-bar-chart f-28"></i>
@@ -176,7 +201,7 @@
 									<div class="card-footer bg-c-green">
 										<div class="row align-items-center">
 											<div class="col-12">
-												<p class="text-white m-b-0">Selesai</p>
+												<p class="text-white m-b-0">Pemasukan</p>
 											</div>
 											<!-- <div class="col-3 text-right">
 												<i class="feather icon-trending-up text-white f-16"></i>

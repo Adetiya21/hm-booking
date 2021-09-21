@@ -208,14 +208,36 @@
                             </li>
                         </ul>
 
-                        <ul class="pcoded-item pcoded-left-item">                               
-                            <li class="laporan">
-                                <a href="<?= site_url('admin/laporan') ?>" class="waves-effect waves-dark">
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li class="laporan pcoded-hasmenu">
+                                <a href="javascript:void(0)" class="waves-effect waves-dark">
                                     <span class="pcoded-micon">
                                         <i class="feather icon-book"></i>
                                     </span>
                                     <span class="pcoded-mtext">Laporan</span>
                                 </a>
+                                <ul class="pcoded-submenu">
+                                    <li class="semua">
+                                        <a href="<?= site_url('admin/laporan') ?>" class="waves-effect waves-dark">
+                                            <span class="pcoded-mtext">Semua</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="pcoded-submenu">
+                                    <li class="selesai">
+                                        <a href="<?= site_url('admin/laporan-selesai') ?>" class="waves-effect waves-dark">
+                                            <span class="pcoded-mtext">Status Selesai</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="pcoded-submenu">
+                                    <li class="belum">
+                                        <a href="<?= site_url('admin/laporan-belum-selesai') ?>" class="waves-effect waves-dark">
+                                            <span class="pcoded-mtext">Status Belum Selesai</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                
                             </li>
                         </ul>
                         

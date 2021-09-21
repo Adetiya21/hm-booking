@@ -2,6 +2,7 @@
 <script>
     $(document).ready(function() {
       $('.laporan').addClass('active');
+      $('.belum').addClass('active');
   	});
 
     function check_int(evt) {
@@ -20,8 +21,8 @@
                             <div class="col-lg-8">
                                 <div class="page-header-title">
                                     <div class="d-inline">
-                                        <h4>LAPORAN <?= strtoupper($bln) ?></h4>
-                                        <span>Berikut data laporan bulan <?= $bln ?>.</span>
+                                        <h4>LAPORAN BELUM SELESAI</h4>
+                                        <span>Berikut data laporan status belum selesai.</span>
                                     </div>
                                 </div>
                             </div>
@@ -31,7 +32,7 @@
                                         <li class="breadcrumb-item">
                                             <a href="<?= site_url('admin/home') ?>"> <i class="feather icon-home"></i> </a>
                                         </li>
-                                        <li class="breadcrumb-item"><a href="<?= site_url('admin/laporan') ?>">Laporan</a>
+                                        <li class="breadcrumb-item"><a href="<?= site_url('admin/laporan-belum-selesai') ?>">Laporan Belum Selesai</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -42,7 +43,7 @@
                     <div class="page-body">
                         <div class="card">
                             <div class="card-header">
-                                <h5>Data Laporan perBulan <?= $bln ?></h5>
+                                <h5>Data Laporan Status Belum Selesai</h5>
                                 <span><!-- use class <code>table</code> inside table element --></span>
                                 <div class="card-header-right"> <ul class="list-unstyled card-option"> <li><i class="feather icon-maximize full-card"></i></li> <li><i class="feather icon-minus minimize-card"></i><li><i class="feather icon-trash close-card"></i></li></ul> </div>
                             </div>
@@ -54,24 +55,23 @@
                                             <div class="col-md-6">           
                                                 <select class="form-control" onchange="location = this.value;">
                                                     <option>Pilih Bulan</option>
-                                                    <option value="<?= site_url('admin/laporan')?>">Semua</option>
-                                                    <option value="<?= site_url('admin/laporan/bulan/01')?>">January</option>
-                                                    <option value="<?= site_url('admin/laporan/bulan/02')?>">February</option>
-                                                    <option value="<?= site_url('admin/laporan/bulan/03')?>">March</option>
-                                                    <option value="<?= site_url('admin/laporan/bulan/04')?>">April</option>
-                                                    <option value="<?= site_url('admin/laporan/bulan/05')?>">Mey</option>
-                                                    <option value="<?= site_url('admin/laporan/bulan/06')?>">June</option>
-                                                    <option value="<?= site_url('admin/laporan/bulan/07')?>">July</option>
-                                                    <option value="<?= site_url('admin/laporan/bulan/08')?>">August</option>
-                                                    <option value="<?= site_url('admin/laporan/bulan/09')?>">September</option>
-                                                    <option value="<?= site_url('admin/laporan/bulan/10')?>">October</option>
-                                                    <option value="<?= site_url('admin/laporan/bulan/11')?>">November</option>
-                                                    <option value="<?= site_url('admin/laporan/bulan/12')?>">December</option>
+                                                    <option value="<?= site_url('admin/laporan-belum-selesai')?>" selected>Semua</option>
+                                                    <option value="<?= site_url('admin/laporan-belum-selesai/bulan/01')?>">January</option>
+                                                    <option value="<?= site_url('admin/laporan-belum-selesai/bulan/02')?>">February</option>
+                                                    <option value="<?= site_url('admin/laporan-belum-selesai/bulan/03')?>">March</option>
+                                                    <option value="<?= site_url('admin/laporan-belum-selesai/bulan/04')?>">April</option>
+                                                    <option value="<?= site_url('admin/laporan-belum-selesai/bulan/05')?>">Mey</option>
+                                                    <option value="<?= site_url('admin/laporan-belum-selesai/bulan/06')?>">June</option>
+                                                    <option value="<?= site_url('admin/laporan-belum-selesai/bulan/07')?>">July</option>
+                                                    <option value="<?= site_url('admin/laporan-belum-selesai/bulan/08')?>">August</option>
+                                                    <option value="<?= site_url('admin/laporan-belum-selesai/bulan/09')?>">September</option>
+                                                    <option value="<?= site_url('admin/laporan-belum-selesai/bulan/10')?>">October</option>
+                                                    <option value="<?= site_url('admin/laporan-belum-selesai/bulan/11')?>">November</option>
+                                                    <option value="<?= site_url('admin/laporan-belum-selesai/bulan/12')?>">December</option>
                                                 </select>
                                             </div>    
                                         </div>
                                     </div>
-                                    
                                 </div>
 
                                     <hr>
@@ -82,16 +82,14 @@
                                             <th width="100px">Tanggal Acara</th>
                                             <th>Nama Catin</th>
                                             <th>Paket</th>
-                                            <th>DP</th>
-                                            <th>Total</th>
-                                            <th>Status</th>
+                                            <th>Total DP</th>
                                             <th width="10%">#</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         </tbody>
                                         <tfoot>
-                                            <tr><th colspan="6" class="text-right"><h5>Total</h5></th><th colspan="2"></th></tr>
+                                            <tr><th colspan="6" class="text-right"><h5>Total</h5> </th></tr>
                                         </tfoot>
                                     </table>
                                 </div>
@@ -137,7 +135,7 @@
         },
         processing: true,
         serverSide: true,
-        ajax: {"url": "<?= base_url() ?>admin/laporan/json_bulan/<?= $blnn ?>", "type": "POST"},
+        ajax: {"url": "<?= base_url() ?>admin/laporan_belum_selesai/json/", "type": "POST"},
         columns: [
         {
             "data": "id",
@@ -170,26 +168,7 @@
                 ribuan  = ribuan.join('.').split('').reverse().join('');
                       return 'Rp. '+ribuan+',-';
                 },
-                defaultContent: 'dp'
-        },
-        {"data": "total",
-            render: function(data) { 
-                var reverse = data.toString().split('').reverse().join(''),
-                ribuan  = reverse.match(/\d{1,3}/g);
-                ribuan  = ribuan.join('.').split('').reverse().join('');
-                      return 'Rp. '+ribuan+',-';
-                },
                 defaultContent: 'total'
-        },
-        {"data": "status",
-            render: function(data) { 
-                if (data=='Belum Selesai') {
-                    return '<label class="label label-sm label-warning text-center" style="width:90%">'+data+'</label>'
-                } else if (data=='Selesai') {
-                    return '<label class="label label-sm label-info text-center" style="width:90%">'+data+'</label>'
-                }
-            },
-            defaultContent: 'status'
         },
         {"data": "view","orderable": false}
         ],
@@ -214,7 +193,7 @@
 
             // Total over all pages
             total = api
-            .column(5)
+            .column(4)
             .data()
             .reduce( function (a, b) {
                return intVal(a) + intVal(b);
@@ -222,7 +201,7 @@
 
             // Total over this page
             pageTotal = api
-            .column( 5, { page: 'current'} )
+            .column( 4, { page: 'current'} )
             .data()
             .reduce( function (a, b) {
                return intVal(a) + intVal(b);
@@ -232,7 +211,7 @@
             sisa    = number_string.length % 3,
             rupiah  = number_string.substr(0, sisa),
             ribuan  = number_string.substr(sisa).match(/\d{3}/g);
-            
+
             if (ribuan) {
                 separator = sisa ? '.' : '';
                 rupiah += separator + ribuan.join('.');
@@ -242,7 +221,7 @@
             sisa1    = number_string.length % 3,
             rupiah1  = number_string.substr(0, sisa1),
             ribuan1  = number_string.substr(sisa1).match(/\d{3}/g);
-            
+
             if (ribuan1) {
                 separator1 = sisa1 ? '.' : '';
                 rupiah1 += separator1 + ribuan1.join('.');
@@ -250,7 +229,7 @@
 
 
             // Update footer
-            $( api.column( 5 ).footer() ).html(
+            $( api.column( 4 ).footer() ).html(
                'Rp. '+rupiah +' (Rp. '+ rupiah1 +' total)'
                );
         },

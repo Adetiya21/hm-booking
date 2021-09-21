@@ -65,8 +65,11 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Paket</label><p style="font-weight: bold;">
-                                                <?php foreach ($paket->result() as $key) {
-                                                    if ($booking->id_paket==$key->id) { echo $key->nama.' (Rp'. rupiah($key->harga). ')'; }} ?></p>
+                                                <?php $total=0;
+                                                 foreach ($paket->result() as $key) {
+                                                    if ($booking->id_paket==$key->id) { 
+                                                        $total=$key->harga;
+                                                        echo $key->nama.' (Rp '. rupiah($key->harga). ')'; }} ?></p>
                                         </div>
                                         <div class="form-group">
                                             <label>Nama Catin</label>
@@ -97,6 +100,13 @@
                                         <div class="form-group">
                                             <label>Tanggal Input Booking</label>
                                                 <p style="font-weight: bold;"><?= date('d F Y h:i:s', strtotime($booking->tgl_booking)); ?></p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Nominal DP</label>
+                                                <p style="font-weight: bold;">Rp <?php 
+                                                $dp= $booking->dp;
+                                                $jml = $total-$dp;
+                                                echo rupiah($booking->dp).' (Kurang Rp '.rupiah($jml).')'; ?></p>
                                         </div>
                                         <div class="form-group">
                                             <label>Status</label><br>
