@@ -23,9 +23,10 @@
 			<div class="container h-full">
 				<div class="wrap_header trans-0-3">
 
-					<div class="logo">
-						<a href="index-2.html">
-							<img src="<?= base_url('assets/images/logo/'.$ten->logo) ?>" alt="IMG-LOGO" data-logofixed="<?= base_url('assets/images/logo/'.$ten->logo) ?>">
+					<div class="logo ">
+						<a href="<?= site_url('') ?>">
+							<img src="<?= base_url('assets/images/logo/'.$ten->logo) ?>" alt="IMG-LOGO" class="hidden-sm">
+							<img src="<?= base_url('assets/images/logo/logo.png') ?>" alt="IMG-LOGO" class="visible-sm">
 						</a>
 					</div>
 

@@ -2300,14 +2300,23 @@ ol {
   .map {
     padding: 0 90px;
   }
+  .visible-sm {
+    display: none !important;
+  }
 }
 @media only screen and (min-width: 1200px) {
   .container {
     max-width: 1170px;
   }
+  .visible-sm {
+    display: none !important;
+  }
 }
 /* Medium Device = 1200px */
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .visible-sm {
+    display: none !important;
+  }
   .header__menu ul li {
     margin-right: 25px;
   }
@@ -2326,6 +2335,13 @@ ol {
 }
 /* Tablet Device = 768px */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+  .visible-sm {
+    display: block !important;
+  }
+  .hidden-sm {
+    display: none !important;
+  }
+
   .header__right__social {
     display: none;
   }
@@ -2391,6 +2407,12 @@ ol {
 }
 /* Wide Mobile = 480px */
 @media only screen and (max-width: 767px) {
+  .visible-sm {
+    display: block !important;
+  }
+  .hidden-sm {
+    display: none !important;
+  }  
 
   .header__menu {
     display: none;
@@ -2511,6 +2533,12 @@ ol {
 }
 /* Small Device = 320px */
 @media only screen and (max-width: 479px) {
+  .visible-sm {
+    display: block !important;
+  }
+  .hidden-sm {
+    display: none !important;
+  }  
   .breadcrumb__text h2 {
     font-size: 28px;
   }
@@ -2554,3 +2582,5 @@ ol {
     font-size: 24px;
   }
 }
+
+

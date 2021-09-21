@@ -33,7 +33,15 @@
     <section id="tentang" class="section-welcome bg1-pattern p-t-80 p-b-80">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 p-t-45 p-b-30 animated animatedFadeInLeft fadeInLeft">
+                <div class="col-md-1"></div>
+                
+                <div class="col-md-3 p-b-30">
+                    <div class="wrap-pic-welcome size2 bo-rad-5 hov-img-zoom m-l-r-auto">
+                        <img src="<?= base_url('assets/images/logo/'.$ten->logo) ?>" alt="IMG-OUR">
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-6 p-t-5 p-b-3 animated animatedFadeInLeft fadeInLeft">
                     <div class="wrap-text-welcome t-center">
                         <span class="tit2 t-center">
                             <?= $ten->nama ?>
@@ -48,11 +56,6 @@
                             Our Story
                             <i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
                         </a> -->
-                    </div>
-                </div>
-                <div class="col-md-6 p-b-30">
-                    <div class="wrap-pic-welcome size2 bo-rad-5 hov-img-zoom m-l-r-auto">
-                        <img src="<?= base_url('assets/images/logo/'.$ten->logo) ?>" alt="IMG-OUR">
                     </div>
                 </div>
             </div>
