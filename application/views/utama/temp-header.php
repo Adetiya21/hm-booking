@@ -23,13 +23,16 @@
 			<div class="container h-full">
 				<div class="wrap_header trans-0-3">
 
-					<div class="logo ">
+					<div class="visib-sm logo1">
 						<a href="<?= site_url('') ?>">
-							<img src="<?= base_url('assets/images/logo/'.$ten->logo) ?>" alt="IMG-LOGO" class="hidden-sm">
-							<img src="<?= base_url('assets/images/logo/logo.png') ?>" alt="IMG-LOGO" class="visible-sm">
+							<img src="<?= base_url('assets/images/logo/logo.png') ?>" alt="LOGO" class="visib-sm">
 						</a>
 					</div>
-
+					<div class="hide-sm logo">
+						<a href="<?= site_url('') ?>">
+							<img src="<?= base_url('assets/images/logo/'.$ten->logo) ?>" alt="LOGO" class="hide-sm">
+						</a>
+					</div>
 					<div class="wrap_menu p-l-45 p-l-0-xl">
 						<nav class="menu">
 							<ul class="main_menu">

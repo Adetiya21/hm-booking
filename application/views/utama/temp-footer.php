@@ -7,8 +7,8 @@
 <footer class="footer">
     <div class="container">
       <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-6">
-          <div class="footer__logo" style="background:white;border-radius:10px;padding:15px">
+        <div class="col-lg-3 col-md-3 col-sm-6" align="center">
+          <div class="footer__logo" style="background:#eee;border-radius:50%;padding:30px;box-shadow:0 0 5px #eee;">
             <a href="#"><img src="<?= base_url('assets/images/logo/'.$ten->logo) ?>" alt=""></a>
           </div>
         </div>

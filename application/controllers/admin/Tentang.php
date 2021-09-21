@@ -37,7 +37,8 @@ class Tentang extends CI_Controller {
 
 		// field form validasi
 		$config = array(
-			array('field' => 'nama','label' => 'Nama Toko','rules' => 'required',),
+			array('field' => 'nama','label' => 'Nama','rules' => 'required',),
+			array('field' => 'tagline','label' => 'Tagline','rules' => 'required',),
 			array('field' => 'no_telp','label' => 'No Telp','rules' => 'required|numeric',),
 			// array('field' => 'email','label' => 'Email','rules' => 'required|valid_email'),
 			array('field' => 'alamat','label' => 'Alamat','rules' => 'required'),
@@ -61,6 +62,7 @@ class Tentang extends CI_Controller {
 			$row = $query->row();
 			$data = array(
 				'nama' => $this->input->post('nama'),
+				'tagline' => $this->input->post('tagline'),
 				'no_telp' => $this->input->post('no_telp'),
 				'email' => $this->input->post('email'),
 				'alamat' => $this->input->post('alamat'),
