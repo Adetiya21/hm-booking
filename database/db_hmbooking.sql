@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 21 Sep 2021 pada 16.34
+-- Waktu pembuatan: 21 Sep 2021 pada 20.24
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.3
 
@@ -59,6 +59,8 @@ CREATE TABLE `tb_booking` (
   `alamat_acara` text NOT NULL,
   `alamat_tinggal` text NOT NULL,
   `bukti_transfer` varchar(255) DEFAULT NULL,
+  `dp` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
   `status` enum('Belum Selesai','Selesai') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -66,12 +68,11 @@ CREATE TABLE `tb_booking` (
 -- Dumping data untuk tabel `tb_booking`
 --
 
-INSERT INTO `tb_booking` (`id`, `id_paket`, `nama`, `no_hp`, `email`, `tgl_acara`, `tgl_booking`, `alamat_acara`, `alamat_tinggal`, `bukti_transfer`, `status`) VALUES
-(1, 1, 'User1', '089669432192', 'user1@user.com', '2021-09-28', '2021-09-19 00:00:00', 'Jl Alamat Gg Alamat 1', 'Jl Alamat Gg Alamat 1', '523a57aab1a5bc5e75b4fa0c57d63f2d.png', 'Belum Selesai'),
-(3, 7, 'User3', '089669432192', 'user1@user.com', '2021-09-23', '2021-09-19 00:00:00', 'Jl Alamat Gg Alamat 1', 'Jl Alamat Gg Alamat 1', '523a57aab1a5bc5e75b4fa0c57d63f2d.png', 'Selesai'),
-(14, 4, 'User2', '089669432192', 'user1@user.com', '2021-09-27', '2021-09-19 00:00:00', 'Jl Alamat Gg Alamat 1', 'Jl Alamat Gg Alamat 1', '523a57aab1a5bc5e75b4fa0c57d63f2d.png', 'Selesai'),
-(15, 5, 'User5', '089669432192', 'user1@user.com', '2021-10-03', '2021-09-19 00:00:00', 'Jl Alamat Gg Alamat 1', 'Jl Alamat Gg Alamat 1', '523a57aab1a5bc5e75b4fa0c57d63f2d.png', 'Belum Selesai'),
-(20, 1, 'Adetiya', '628123456787', 'adetiyaburhasanp45@gmail.com', '2021-09-30', '2021-09-21 14:30:24', 'Sdttggygb', 'Aderghhvb', '4ade8139d77ef1f424364b8873b93402.jpeg', 'Belum Selesai');
+INSERT INTO `tb_booking` (`id`, `id_paket`, `nama`, `no_hp`, `email`, `tgl_acara`, `tgl_booking`, `alamat_acara`, `alamat_tinggal`, `bukti_transfer`, `dp`, `total`, `status`) VALUES
+(1, 3, 'Adetiya', '62123456789', 'user1@user.com', '2021-10-02', '2021-09-22 01:11:13', 'Jl Karet Gg Karet Indah', 'Jl Karet Gg Karet Indah', 'a2a7a3bf9141d344b195738615e8c3d3.jpg', 1000000, 1000000, 'Belum Selesai'),
+(2, 4, 'Putri', '62876543210', 'user2@user.com', '2021-09-25', '2021-09-22 01:14:10', 'Jl Apel Gg Pisang', 'Jl Apel Gg Pisang', '9ffaf3a0982a0ddc92a0e8df263eb5ab.jpg', 1000000, 3500000, 'Selesai'),
+(3, 4, 'Vina', '62849404505', 'user3@user.com', '2021-09-26', '2021-09-22 01:14:10', 'Jl Sawit Gg Bayam', 'Jl Sawit Gg Bayam', '9ffaf3a0982a0ddc92a0e8df263eb5ab.jpg', 500000, 3500000, 'Selesai'),
+(4, 6, 'Kresna', '6280987654321', 'user4@user.com', '2021-10-09', '2021-09-22 01:16:06', 'Jl Padi Gg Kapas', 'Jl Padi Gg Kapas', '236726e7ebd9d1ccafab9fb15ddc7ea1.jpg', 500000, 1000000, 'Belum Selesai');
 
 -- --------------------------------------------------------
 
@@ -116,10 +117,10 @@ CREATE TABLE `tb_header_landscape` (
 
 INSERT INTO `tb_header_landscape` (`id`, `gambar`, `status`) VALUES
 (1, 'landscape.jpeg', 'Active'),
-(9, '8e161c208d0d2ee594756686fc0176b1.jpg', 'Active'),
-(10, '11c3380d625e6e6a5716e54f7d8215b6.jpg', 'Active'),
-(11, '67406e64932bf56f1e33d408180962d1.jpg', 'Non Active'),
-(12, '884c05b13a7a903840a2366c83f7e3b8.jpg', 'Active');
+(2, '8e161c208d0d2ee594756686fc0176b1.jpg', 'Active'),
+(3, '11c3380d625e6e6a5716e54f7d8215b6.jpg', 'Active'),
+(4, '67406e64932bf56f1e33d408180962d1.jpg', 'Non Active'),
+(5, '884c05b13a7a903840a2366c83f7e3b8.jpg', 'Active');
 
 -- --------------------------------------------------------
 
@@ -163,11 +164,11 @@ CREATE TABLE `tb_paket` (
 
 INSERT INTO `tb_paket` (`id`, `nama`, `harga`, `layanan`, `keterangan`, `jml_tim`, `gambar`) VALUES
 (1, 'Paket 1', 1700000, 'Foto Wedding <br> (Resepsi)', '100 Lembar 4R + Album <br>\r\n12 RW + Bingkai', 2, NULL),
-(3, 'Paket 2', 2500000, 'Foto Wedding <br> \r\n(Akad + Resepsi)', '100 Lembar 4R + Album <br>\r\n12 RW + Bingkai', 2, NULL),
-(4, 'Paket 3', 2800000, 'Foto Wedding <br> \r\nVideo Wedding', 'Video Dokumentasi Max 1 Jam <br>\r\n2 Lembar 8R + Bingkai <br>\r\n100 Lembar 4R + Album <br>\r\n12 R + Bingkai', 3, NULL),
-(5, 'Paket 4', 3500000, 'Foto Wedding <br> \r\nVideo Wedding', 'Video Wedding Clip 1-3 Menit <br>\r\nVideo Dokumentasi Max 1 Jam <br>\r\n2 Lembar 8R + Bingkai <br>\r\n100 Lembar 4R + Album <br>\r\n12 RW + Bingkai', 3, NULL),
-(7, 'Paket 5', 4000000, 'Foto Wedding <br> \r\nVideo Wedding', 'Video Wedding Clip 2-5 Menit <br>\r\nVideo Dokumentasi Max 2 Jam <br>\r\n2 Lembar 8R + Bingkai <br>\r\n150 Lembar 4R + Album <br>\r\n12 RW + Bingkai', 4, NULL),
-(8, 'Paket 6', 4500000, 'Foto Wedding <br> \r\nVideo Wedding', 'Teaser 1 Menit <br>\r\nVideo Wedding Clip 2-5 Menit <br>\r\nVideo Dokumentasi Max 2 Jam <br>\r\n2 Lembar 8R + Bingkai <br>\r\n150 Lembar 4R + Album <br>\r\n12 RW + Bingkai', 4, NULL);
+(2, 'Paket 2', 2500000, 'Foto Wedding <br> \r\n(Akad + Resepsi)', '100 Lembar 4R + Album <br>\r\n12 RW + Bingkai', 2, NULL),
+(3, 'Paket 3', 2800000, 'Foto Wedding <br> \r\nVideo Wedding', 'Video Dokumentasi Max 1 Jam <br>\r\n2 Lembar 8R + Bingkai <br>\r\n100 Lembar 4R + Album <br>\r\n12 R + Bingkai', 3, NULL),
+(4, 'Paket 4', 3500000, 'Foto Wedding <br> \r\nVideo Wedding', 'Video Wedding Clip 1-3 Menit <br>\r\nVideo Dokumentasi Max 1 Jam <br>\r\n2 Lembar 8R + Bingkai <br>\r\n100 Lembar 4R + Album <br>\r\n12 RW + Bingkai', 3, NULL),
+(5, 'Paket 5', 4000000, 'Foto Wedding <br> \r\nVideo Wedding', 'Video Wedding Clip 2-5 Menit <br>\r\nVideo Dokumentasi Max 2 Jam <br>\r\n2 Lembar 8R + Bingkai <br>\r\n150 Lembar 4R + Album <br>\r\n12 RW + Bingkai', 4, NULL),
+(6, 'Paket 6', 4500000, 'Foto Wedding <br> \r\nVideo Wedding', 'Teaser 1 Menit <br>\r\nVideo Wedding Clip 2-5 Menit <br>\r\nVideo Dokumentasi Max 2 Jam <br>\r\n2 Lembar 8R + Bingkai <br>\r\n150 Lembar 4R + Album <br>\r\n12 RW + Bingkai', 4, NULL);
 
 -- --------------------------------------------------------
 
@@ -193,7 +194,7 @@ CREATE TABLE `tb_tentang` (
 --
 
 INSERT INTO `tb_tentang` (`id`, `nama`, `tagline`, `logo`, `tentang`, `no_telp`, `ig`, `fb`, `alamat`, `email`) VALUES
-(1, 'HM Project', 'Wedding Photographer', 'dfdbbee3ef36488862260448f7fcc508.png', '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex, quam. Itaque porro laboriosam architecto quidem consequuntur consectetur dicta maxime, non, voluptatum culpa magnam molestiae, eum cum maiores consequatur libero eos.</p>', '628123456789', 'hmproject_art', '', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.', NULL);
+(1, 'HM Project', 'Wedding Photographert', 'dfdbbee3ef36488862260448f7fcc508.png', '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex, quam. Itaque porro laboriosam architecto quidem consequuntur consectetur dicta maxime, non, voluptatum culpa magnam molestiae, eum cum maiores consequatur libero eos.</p>', '628123456789', 'hmproject_art', '', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.', NULL);
 
 --
 -- Indexes for dumped tables
@@ -256,7 +257,7 @@ ALTER TABLE `tb_admin`
 -- AUTO_INCREMENT untuk tabel `tb_booking`
 --
 ALTER TABLE `tb_booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_galeri`
@@ -268,7 +269,7 @@ ALTER TABLE `tb_galeri`
 -- AUTO_INCREMENT untuk tabel `tb_header_landscape`
 --
 ALTER TABLE `tb_header_landscape`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_header_portrait`
@@ -280,7 +281,7 @@ ALTER TABLE `tb_header_portrait`
 -- AUTO_INCREMENT untuk tabel `tb_paket`
 --
 ALTER TABLE `tb_paket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_tentang`
@@ -296,7 +297,7 @@ ALTER TABLE `tb_tentang`
 -- Ketidakleluasaan untuk tabel `tb_booking`
 --
 ALTER TABLE `tb_booking`
-  ADD CONSTRAINT `tb_booking_ibfk_1` FOREIGN KEY (`id_paket`) REFERENCES `tb_paket` (`id`);
+  ADD CONSTRAINT `tb_booking_ibfk_1` FOREIGN KEY (`id_paket`) REFERENCES `tb_paket` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
