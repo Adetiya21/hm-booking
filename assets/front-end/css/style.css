@@ -1327,11 +1327,14 @@ ol {
   text-transform: uppercase;
   margin-bottom: 28px;
 }
-.footer__widget ul li {
+.footer__widget ul li a {
   list-style: none;
   font-size: 14px;
   color: #ffffff;
   line-height: 25px;
+}
+.footer__widget ul li a:hover {
+  color: #1f77af;
 }
 .footer__widget p {
   font-size: 14px;
