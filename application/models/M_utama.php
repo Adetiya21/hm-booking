@@ -14,8 +14,8 @@ class M_utama extends CI_Model {
 		$this->output->set_header('X-Frame-Options: DENY');
 		// prevent mime based attacks
 		$this->output->set_header('X-Content-Type-Options: nosniff');
-		if ($this->session->userdata('WebsiteMasterBotanical') != "SudahMasukMas") {
-			$sess_data['WebsiteMasterBotanical'] = "SudahMasukMas";
+		if ($this->session->userdata('hmproject') != "SudahMasukMas") {
+			$sess_data['hmproject'] = "SudahMasukMas";
 			$this->session->set_userdata($sess_data);
 		}
 	}

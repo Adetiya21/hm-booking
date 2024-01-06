@@ -12,7 +12,7 @@ class Galeri extends CI_Controller {
 	// fun halaman
 	public function i($page=0)
 	{
-		$data['title'] = 'Galeri';
+		$data['title'] = 'Galeri HM Project';
 		$data['ten'] = $this->DButama->GetDB('tb_tentang')->row();  //load database tb_tentang
 
 		// load database

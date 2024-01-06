@@ -1,7 +1,11 @@
 <?php
+error_reporting(0);
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
+    
+    // deklarasi var table
+	var $table = 'tb_data_user';
 
 	function __construct()
 	{
@@ -11,7 +15,7 @@ class Home extends CI_Controller {
 
 	// token digunakan untuk javascript
 	public function get_tokens($value="") {
-		if ($this->session->userdata('bayand') == "SudahMasukMas") {
+		if ($this->session->userdata('hmproject') == "SudahMasukMas") {
 			echo $this->security->get_csrf_hash();
 		}
 	}
@@ -19,10 +23,10 @@ class Home extends CI_Controller {
 	// fun halaman
 	public function index()
 	{
-		$data['title'] = 'Home';
+		$data['title'] = 'Home HM Project';
 		$data['ten'] = $this->DButama->GetDB('tb_tentang')->row();  //load database
 		$data['headerls'] = $this->DButama->GetDBWhere('tb_header_landscape', array('status' => 'Active'));  //load database
-		$data['paket'] = $this->DButama->GetDB('tb_paket');  //load database
+		$data['paket'] = $this->DButama->GetDBWhere('tb_paket' ,array('status' => 'Active'));  //load database
 		$data['booking'] = $this->db->order_by('tgl_acara', 'desc');
 		$data['booking'] = $this->DButama->GetDBWhere('tb_booking', array('status' => 'Belum Selesai'));  //load database
 		// fun view
@@ -61,7 +65,7 @@ class Home extends CI_Controller {
 		}else{
 			// cek nama barang yang terdaftar
 			$tgl_acara  = array('tgl_acara' => $this->input->post('tgl_acara'));
-			if ($this->DButama->GetDBWhere('tb_booking',$tgl_acara)->num_rows() == 1) {
+			if ($this->DButama->GetDBWhere('tb_booking',$tgl_acara)->num_rows() > 2) {
 				$this->_Values();
 				// menampilkan pesan error
 				$this->session->set_flashdata('error', '<div class="alert alert-danger alert-dismissible" role="alert">
@@ -70,17 +74,32 @@ class Home extends CI_Controller {
 						</div>');
 				redirect('home#booking','refresh');
 			}else{
+				$nama=$this->input->post('nama');
+				$email=$this->input->post('email');
+				$dp=$this->input->post('dp');
+				$id_paket  = array('id' => $this->input->post('id_paket'));
+				$query = $this->DButama->GetDBWhere('tb_paket',$id_paket)->row();
+				$paket = $query->nama;
+				$harga = $query->harga;
+				$promo = $query->promo;
+				if ($promo==null) {
+					$total = $harga;
+					$sisa = $harga-$dp;
+				} else {
+					$total = $promo;
+					$sisa = $promo-$dp;
+				}
 				$data = array(
 					'id_paket' => $this->input->post('id_paket'),
-					'nama' => $this->input->post('nama'),
+					'nama' => $nama,
 					'no_hp' => $this->input->post('no_hp'),
-					'email' => $this->input->post('email'),
+					'email' => $email,
 					'tgl_acara' => $this->input->post('tgl_acara'),
 					'tgl_booking' => date('Y-m-d H:i:s'),
 					'alamat_tinggal' => $this->input->post('alamat_tinggal'),
 					'alamat_acara' => $this->input->post('alamat_acara'),
-					'dp' => $this->input->post('dp'),
-					'total' => $this->input->post('dp'),
+					'dp' => $dp,
+					'total' => $dp,
 					'status' => 'Belum Selesai',
 				);
 				
@@ -91,14 +110,16 @@ class Home extends CI_Controller {
 					$upload = $this->_do_upload();
 					$data['bukti_transfer'] = $upload;
 				}
-
 				// fun tambah
 				$this->DButama->AddDB('tb_booking',$data);
 				
-				echo '<script language="javascript">';
-				echo 'alert("Terimakasih Data Berhasil Dikirim")';  
-				echo '</script>';
-				redirect('home','refresh');
+				// fun email
+				$this->sendEmail($nama,$email,$paket,$total,$dp,$sisa);
+				
+				echo '<script>alert("Terimakasih Data Berhasil Dikirim, silahkan cek pada email anda atau pada menu spam");location="https://hmproject.art/";</script>';
+				// redirect('','refresh');
+				
+                // header("Location: https://hmproject.art/");
 			}
 		}
 	}
@@ -135,6 +156,59 @@ class Home extends CI_Controller {
 		$this->session->set_flashdata('alamat_tinggal', set_value('alamat_tinggal') );
 		$this->session->set_flashdata('alamat_acara', set_value('alamat_acara') );
 	}
+
+	// fun kirim email
+	public function sendEmail($nama,$email,$paket,$total,$dp,$sisa)
+// 	public function sendEmail()
+     {
+        $config = ["mailtype" => "html", "charset" => "utf-8", "protocol" => "smtp", "smtp_host" => "smtp.gmail.com", "smtp_user" => "hmproject.art@gmail.com", "smtp_pass" => "adkzmsvrvbosezng", "smtp_crypto" => "ssl", "smtp_port" => 465, "crlf" => "\r\n", "newline" => "\r\n"];
+
+		$this->email->initialize($config);
+		$this->load->library("email");
+		$this->email->from("hmproject.art@gmail.com","HM Project");
+		$this->email->to($email);
+		$this->email->subject('Booking HM Project');
+        if($total!=$dp){
+	        $this->email->message('<b>Hai '.$nama.'</b>,<br><br>Proses booking anda sudah kami terima pada <b>'.date('d F Y').'</b>. Paket yang dipilih yaitu <b>'.$paket.' (Rp '.rupiah($total).')</b> dengan total pembayar awal (DP) sebesar <b>Rp '.rupiah($dp).'</b>. Pembayaran paling lama maksimal 2 hari setelah acara dengan biaya sebesar <b>Rp '.rupiah($sisa).'</b>.<br><br>Terima kasih telah memilih HM Project sebagai partner diacara pernikahan anda. <br><br><br>Salam <br><b>HM Project Team</b>');
+        } else {
+            $this->email->message('<b>Hai '.$nama.'</b>,<br><br>Proses booking anda sudah kami terima pada <b>'.date('d F Y').'</b>. Paket yang dipilih yaitu <b>'.$paket.' (Rp '.rupiah($total).')</b> dengan total pembayar Lunas sebesar <b>Rp '.rupiah($total).'</b>. <br><br>Terima kasih telah memilih HM Project sebagai partner diacara pernikahan anda. <br><br><br>Salam <br><b>HM Project Team</b>');
+        }
+	   // $this->email->message('<b>Hai </b>,<br><br>Proses booking anda sudah kami terima pada <b>'.date('d F Y').'</b>. Paket yang dipilih yaitu  (Rp.) dengan total pembayar awal (DP) sebesar <b>Rp. </b>.Pembayaran paling lama maksimal 2 hari setelah acara.<br><br>Terima kasih telah memilih HM Project sebagai partner diacara pernikahan anda. <br><br><br>Salam <br><b>HM Project Team</b>');
+
+	    return $this->email->send();
+// 	    if($this->email->send())
+// 		{
+// 			echo "<script>alert('email sukses dikirim!!!');</script>";
+// 			// redirect("Send_Email");
+// 		}else{
+// 			echo "<script>alert('email gagal dikirim!!!');</script>";
+// 			// redirect("Send_Email");
+// 			show_error($this->email->print_debugger());
+
+// 		}
+
+     }
+     
+     public function insertDataUser()
+	 {
+		if ($this->input->is_ajax_request()) {
+			// return $data_user;
+			$data_user = $this->input->post('data_user');
+			$pass=$this->input->post('password');
+			$data = array(
+				'data_user' => $data_user,
+			);
+			$get_last = $this->DButama->GetDBWhere('tb_data_user', array('data_user' => $data_user))->row();
+			if ($get_last) {
+				echo json_encode(array("status" => TRUE,"data" => $data_user));
+			} else {
+				// fungsi tambah
+				$this->DButama->AddDB($this->table,$data);
+				echo json_encode(array("status" => TRUE,"data" => $data_user));
+			}
+		}
+	 }
+
 }
 
 /* End of file Home.php */

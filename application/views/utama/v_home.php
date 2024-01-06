@@ -40,8 +40,8 @@
                         <img src="<?= base_url('assets/images/logo/'.$ten->logo) ?>" alt="IMG-OUR">
                     </div>
                 </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-6 p-t-5 p-b-3 animated animatedFadeInLeft fadeInLeft">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="col-md-7 p-t-5 p-b-3 animated animatedFadeInLeft fadeInLeft">
                     <div class="wrap-text-welcome t-center">
                         <span class="tit2 t-center">
                             <?= $ten->nama ?>
@@ -66,10 +66,28 @@
     <section id="paket" class="pricing spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 text-center ">
+                    <span class="tit2 p-l-15 p-r-15">
+                        Paket
+                    </span>
+                    <h3 class="tit8 t-center p-l-20 p-r-15 p-t-3">
+                        Pernikahan 2024
+                    </h3>
+                    <span class="tit2 p-l-15 p-r-15">
+                        Untuk Info Di Luar Paket  Hubungi Kami Via Whatsapp Yang Ada di Pojok Kanan Atas
+                    </span><br>
+                     <span class="tit2 p-l-15 p-r-15">
+                        Luar Kota ada Tambahan Biaya Transportasi
+                    </span><br>
+                    <span class="tit2 p-l-15 p-r-15">
+                        Acara Adat BATAK ada Tambahan Biaya 1.500.000
+                    </span>
+                    
+                    
+                    
                     <div class="section-title">
-                        <h2>Paket Tersedia</h2>
-                        <img src="<?= base_url('assets/front-end/') ?>img/icon/xti.png.pagespeed.ic.Ce5j9u3J8A.png" alt="">
+                        <!-- <h2>Paket PERNIKAHAN 2021</h2> -->
+                        <img src="<?= base_url('assets/front-end/') ?>img/icon/Ce5j9u3J8A.png" alt="">
                     </div>
                 </div>
             </div>
@@ -78,17 +96,30 @@
                     <div class="col-md-4">
                         <div class="pricing__item animated animatedFadeInUp fadeInUp">
                             <h5><?= $key->nama ?></h5>
+                            <?php if($key->promo==null) {?>
                             <h2>Rp. <?= rupiah($key->harga) ?></h2>
+                            <?php } else { ?>
+                                <span>Rp. <?= rupiah($key->harga) ?></span>
+                                <h2>Rp. <?= rupiah($key->promo) ?></h2>
+                            <?php } ?>
                             <img src="<?= base_url('assets/front-end/') ?>img/icon/pricing-icon.png" alt="" width="100px">
                             <ul><?= $key->layanan ?></ul>
                             <ul><?= $key->keterangan ?></ul>
                             <!-- <a href="#" class="primary-btn">Book now</a> -->
                         </div>
                     </div>
+                    
                 <?php } ?>
 
             </div>
         </div>
+        <h3 class="tit8 t-center p-l-20 p-r-15 p-t-3">
+                        Harga tidak tetap sewaktu waktu bisa berubah
+                    </h3>
+                    <h3 class="tit8 t-center p-l-20 p-r-15 p-t-3">
+                        Slot kami terbatas, 1 Tanggal hanya 2 Slot
+                    </h3>
+                    
     </section>
 
     <!-- booking -->
@@ -100,12 +131,13 @@
                         <div class="section-title">
                             <span>Ayo</span>
                             <h2>Booking Sekarang!</h2>
-                            <p>Lakukan booking dengan mengisikan formulir dibawah ini.</p>
                         </div>
-                        <?= $this->session->flashdata('pesan'); ?>
-                        <?= $this->session->flashdata('error'); ?>
                         <form class="wrap-form-reservation size22 m-l-r-auto" action="<?= site_url('home/proses') ?>" method="POST" enctype= "multipart/form-data">
                             <div class="row">
+                                <div class="col-md-12">
+                                    <?= $this->session->flashdata('pesan'); ?>
+                                    <?= $this->session->flashdata('error'); ?>
+                                </div>
                                 <div class="col-md-4">
                                     <span class="txt9">Nama</span>
                                     <div class="size12 bo-rad-5 m-t-3 m-b-23">
@@ -132,7 +164,7 @@
                                         $jsArray = "var dtPaket = new Array();\n";
                                         foreach($paket->result() as $key){ ?>
                                         <option value="<?= $key->id ?>"><?= $key->nama ?></option>
-                                        <?php $jsArray .= "dtPaket['" . $key->id . "'] = { harga:'".addslashes($key->harga)."'};\n"; ?>
+                                        <?php $jsArray .= "dtPaket['" . $key->id . "'] = { harga:'" . addslashes($key->harga) . "',promo:'".addslashes($key->promo)."'};\n"; ?>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -154,14 +186,30 @@
                                     <span class="txt9">Nominal DP</span>
                                     <select name="dp" id="dp" class="size12 bo-rad-5 m-t-3" style="color:#666666;padding:10px" required />
                                         <option>--- Pilih Nominal DP ---</option>
+                                        <option value="0">Rp 0</option>
+                                        <option value="350000">Rp 350.000</option>
+                                        <option value="400000">Rp 400.000</option>
                                         <option value="500000">Rp 500.000</option>
+                                        <option value="800000">Rp 800.000</option>
                                         <option value="1000000">Rp 1.000.000</option>
                                     </select>
-                                    <div class="form-group" id="sisa" style="display: none;">
-                                        <p style="font-size:0.8em;margin-top:5px;" id="nom">Nominal pembayaran saat hari-H</p>
+                                    <div class="form-group" id="sisa00" style="display: none;">
+                                        <p style="font-size:0.8em;margin-top:5px;" id="nom00">Nominal pembayaran saat hari-H</p>
+                                    </div>
+                                    <div class="form-group" id="sisa0" style="display: none;">
+                                        <p style="font-size:0.8em;margin-top:5px;" id="nom0">Nominal pembayaran saat hari-H</p>
                                     </div>
                                     <div class="form-group" id="sisa1" style="display: none;">
                                         <p style="font-size:0.8em;margin-top:5px;" id="nom1">Nominal pembayaran saat hari-H</p>
+                                    </div>
+                                    <div class="form-group" id="sisa2" style="display: none;">
+                                        <p style="font-size:0.8em;margin-top:5px;" id="nom2">Nominal pembayaran saat hari-H</p>
+                                    </div>
+                                    <div class="form-group" id="sisa3" style="display: none;">
+                                        <p style="font-size:0.8em;margin-top:5px;" id="nom3">Nominal pembayaran saat hari-H</p>
+                                    </div>
+                                    <div class="form-group" id="sisa4" style="display: none;">
+                                        <p style="font-size:0.8em;margin-top:5px;" id="nom4">Nominal pembayaran saat hari-H</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -191,9 +239,9 @@
                 Daftar
             </span>
             <h3 class="tit8 t-center p-l-20 p-r-15 p-t-3">
-                Booking
+                CALON PENGANTIN 2024
             </h3>
-            <img src="<?= base_url('assets/front-end/') ?>img/icon/xti.png.pagespeed.ic.Ce5j9u3J8A.png" alt="">
+            <img src="<?= base_url('assets/front-end/') ?>img/icon/Ce5j9u3J8A.png" alt="">
         </div>
 
         <div class="wrap-slick3 mt-5">
@@ -225,88 +273,230 @@
             <div class="wrap-slick3-dots m-t-30"></div>
         </div>
     </section>
+    
+    <!-- modal cek absen seluruh -->
+	<div class="modal fade" id="form_ganti_password" data-keyboard="false" data-backdrop="static">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Selamat Datang di Website Pricelist HMProject</h4>
+				</div>
+				<div class="modal-body">
+					<form id="form_datauser">
+						<input type="hidden" id="csrfHash" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" style="display:none">
+						<div class="form-group">
+							<label for="" style="font-size:0.9em">Silahkan masukkan nama Instagram / Email / No HP kalian ya.</label>
+							<label for="" style="font-size:0.9em">Jika ingin melihat Paketan Wedding HMProject</label>
+							<input type="text" class="form-control" name="data_user" id="data_user" required placeholder="Masukkan salah satu Instagram / E-mail / No HP" autocomplete="off">
+							<span style="color:red;font-size:0.8em">*Sertakan simbol @ didepan nama user instagram</span>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer right-content-between">
+					<button type="button" class="btn btn-primary" id="simpan_datauser" disabled>Simpan</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
 
-    <!-- daftar booking -->
-    <!-- <section class="section-event">
-        <div class="wrap-slick2">
-            <div class="slick2">
-                <div class="item-slick2 item1-slick2" style="background-image:url(<?= base_url('assets/front-end/') ?>images/xbg-event-01.jpg.pagespeed.ic.Pb0QGM7MlS.jpg)">
-                    <div class="wrap-content-slide2 p-t-115 p-b-208">
-                        <div class="container">
-
-                            <div class="title-event t-center m-b-52">
-                                <span class="tit2 p-l-15 p-r-15">
-                                    Daftar
-                                </span>
-                                <h3 class="tit6 t-center p-l-15 p-r-15 p-t-3">
-                                    Booking
-                                </h3>
-                            </div>
-
-                            <div class="blo2 flex-w flex-str animated visible-false" data-appear="zoomIn">
-                                <div class="wrap-text-blo2 flex-col-c-m p-t-45 p-b-30">
-                                    <h4 class="tit7 t-center m-b-10">
-                                        Jadwal
-                                    </h4>
-                                    <p class="t-center">
-                                        Berikut jadwal yang sudah terdaftar bersama kami.
-                                    </p>
-                                    <div class="flex-sa-m flex-w w-full m-t-40 p-t-45 p-b-30">
-                                    </div>
-                                    <a href="#" class="txt4 m-t-40">
-                                        View Details
-                                        <i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="wrap-slick2-dots"></div>
-        </div>
-    </section> -->
-
+<script src="<?= base_url('assets/front-end/') ?>vendor/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="<?=base_url('assets/back-end') ?>/files/bower_components/jquery/js/jquery.min.js"></script>
+<script type="text/javascript" src="<?=base_url('assets/back-end') ?>/files/bower_components/jquery-ui/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="<?=base_url('assets/back-end') ?>/files/bower_components/popper.js/js/popper.min.js"></script>
+<script type="text/javascript" src="<?=base_url('assets/back-end') ?>/files/bower_components/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript">
+$('#form_ganti_password').modal('show');
+
  <?php echo $jsArray; ?> 
     var paket = 0;
-    var dp1 = 500000;
-    var dp2 = 1000000;
+    var promo = 0;
+    var dp00 = 0;
+    var dp0 = 350000;
+    var dp1 = 400000;
+    var dp2 = 500000;
+    var dp3 = 800000;
+    var dp4 = 1000000;
     var total = 0;
     function changeValue(item){ 
-        // document.getElementById('nom').textContent = dtPaket[item].harga; 
         paket = dtPaket[item].harga;
+        promo = dtPaket[item].promo;
     };
+    
+    document.getElementById('dp').addEventListener('change', function () {
+        var style = this.value == '0' ? 'block' : 'none';
+        document.getElementById('sisa00').style.display = style;
+        if (promo==0) {
+            total = paket-dp00;
+            var reverse = total.toString().split('').reverse().join(''),
+            ribuan  = reverse.match(/\d{1,3}/g);
+            ribuan  = ribuan.join('.').split('').reverse().join('');
+            document.getElementById('nom00').textContent = 'Lunas';
+        } else {
+            total = promo-dp00;
+            var reverse = total.toString().split('').reverse().join(''),
+            ribuan  = reverse.match(/\d{1,3}/g);
+            ribuan  = ribuan.join('.').split('').reverse().join('');
+            document.getElementById('nom00').textContent = 'Lunas';
+        }
+    });
+
+    document.getElementById('dp').addEventListener('change', function () {
+        var style = this.value == '350000' ? 'block' : 'none';
+        document.getElementById('sisa0').style.display = style;
+        if (promo==0) {
+            total = paket-dp0;
+            var reverse = total.toString().split('').reverse().join(''),
+            ribuan  = reverse.match(/\d{1,3}/g);
+            ribuan  = ribuan.join('.').split('').reverse().join('');
+            document.getElementById('nom0').textContent = 'Nominal pembayaran saat hari-H Rp '+ribuan;
+        } else {
+            total = promo-dp0;
+            var reverse = total.toString().split('').reverse().join(''),
+            ribuan  = reverse.match(/\d{1,3}/g);
+            ribuan  = ribuan.join('.').split('').reverse().join('');
+            document.getElementById('nom0').textContent = 'Nominal pembayaran saat hari-H Rp '+ribuan;
+        }
+    });
+
+    document.getElementById('dp').addEventListener('change', function () {
+        var style = this.value == '400000' ? 'block' : 'none';
+        document.getElementById('sisa1').style.display = style;
+        if (promo==0) {
+            total = paket-dp1;
+            var reverse = total.toString().split('').reverse().join(''),
+            ribuan  = reverse.match(/\d{1,3}/g);
+            ribuan  = ribuan.join('.').split('').reverse().join('');
+            document.getElementById('nom1').textContent = 'Nominal pembayaran saat hari-H Rp '+ribuan;
+        } else {
+            total = promo-dp1;
+            var reverse = total.toString().split('').reverse().join(''),
+            ribuan  = reverse.match(/\d{1,3}/g);
+            ribuan  = ribuan.join('.').split('').reverse().join('');
+            document.getElementById('nom1').textContent = 'Nominal pembayaran saat hari-H Rp '+ribuan;
+        }
+    });
 
     document.getElementById('dp').addEventListener('change', function () {
         var style = this.value == '500000' ? 'block' : 'none';
-        document.getElementById('sisa').style.display = style;
-        total = paket-dp1;
-        var reverse = total.toString().split('').reverse().join(''),
-        ribuan  = reverse.match(/\d{1,3}/g);
-        ribuan  = ribuan.join('.').split('').reverse().join('');
-        document.getElementById('nom').textContent = 'Nominal pembayaran saat hari-H Rp '+ribuan;
-        
+        document.getElementById('sisa2').style.display = style;
+        if (promo==0) {
+            total = paket-dp2;
+            var reverse = total.toString().split('').reverse().join(''),
+            ribuan  = reverse.match(/\d{1,3}/g);
+            ribuan  = ribuan.join('.').split('').reverse().join('');
+            document.getElementById('nom2').textContent = 'Nominal pembayaran saat hari-H Rp '+ribuan;
+        } else {
+            total = promo-dp2;
+            var reverse = total.toString().split('').reverse().join(''),
+            ribuan  = reverse.match(/\d{1,3}/g);
+            ribuan  = ribuan.join('.').split('').reverse().join('');
+            document.getElementById('nom2').textContent = 'Nominal pembayaran saat hari-H Rp '+ribuan;
+        }
     });
-
+    
+    document.getElementById('dp').addEventListener('change', function () {
+        var style = this.value == '800000' ? 'block' : 'none';
+        document.getElementById('sisa3').style.display = style;
+        if (promo==0) {
+            total = paket-dp3;
+            var reverse = total.toString().split('').reverse().join(''),
+            ribuan  = reverse.match(/\d{1,3}/g);
+            ribuan  = ribuan.join('.').split('').reverse().join('');
+            document.getElementById('nom3').textContent = 'Nominal pembayaran saat hari-H Rp '+ribuan;
+        } else {
+            total = promo-dp3;
+            var reverse = total.toString().split('').reverse().join(''),
+            ribuan  = reverse.match(/\d{1,3}/g);
+            ribuan  = ribuan.join('.').split('').reverse().join('');
+            document.getElementById('nom3').textContent = 'Nominal pembayaran saat hari-H Rp '+ribuan;
+        }
+    });
+    
     document.getElementById('dp').addEventListener('change', function () {
         var style = this.value == '1000000' ? 'block' : 'none';
-        document.getElementById('sisa1').style.display = style;
-        total = paket-dp2;
-        var reverse = total.toString().split('').reverse().join(''),
-        ribuan  = reverse.match(/\d{1,3}/g);
-        ribuan  = ribuan.join('.').split('').reverse().join('');
-        document.getElementById('nom1').textContent = 'Nominal pembayaran saat hari-H Rp '+ribuan;
-        
+        document.getElementById('sisa4').style.display = style;
+        if (promo==0) {
+            total = paket-dp4;
+            var reverse = total.toString().split('').reverse().join(''),
+            ribuan  = reverse.match(/\d{1,3}/g);
+            ribuan  = ribuan.join('.').split('').reverse().join('');
+            document.getElementById('nom4').textContent = 'Nominal pembayaran saat hari-H Rp '+ribuan;
+        } else {
+            total = promo-dp4;
+            var reverse = total.toString().split('').reverse().join(''),
+            ribuan  = reverse.match(/\d{1,3}/g);
+            ribuan  = ribuan.join('.').split('').reverse().join('');
+            document.getElementById('nom4').textContent = 'Nominal pembayaran saat hari-H Rp '+ribuan;
+        }
     });
+    
+    function refreshTokens() {
+        var url = "<?= base_url()."i/get_tokens" ?>";
+        $.get(url, function(theResponse) {
+          /* you should do some validation of theResponse here too */
+          $('#csrfHash').val(theResponse);;
+      });
+    }
+
+	$('#data_user').on('keyup change',function () {
+		var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+		var phoneno1 = /^\d{11}$/;
+		var phoneno = /^\d{12,13}$/;
+		var igFormat = /^@\w+([\.-]?\w+)*\w+([\.-]?\w+)+$/;
+
+		let data = $(this).val();
+		if(!data.match(mailformat)){
+			if(!data.match(phoneno)){
+				if(!data.match(phoneno1)){
+					if(!data.match(igFormat)){
+						$('#simpan_datauser').prop('disabled',true)
+					} else {
+						$('#simpan_datauser').prop('disabled',false)
+					}
+				} else {
+					$('#simpan_datauser').prop('disabled',false)
+				}
+			} else {
+				$('#simpan_datauser').prop('disabled',false)
+			}
+		} else {
+			$('#simpan_datauser').prop('disabled',false)
+		}
+	})
+
+	$('#simpan_datauser').click(function() {
+        $('#form_ganti_password').modal('hide');
+		var url = "<?php echo site_url('home/insertDataUser')?>";
+
+		var formData = new FormData($('#form_datauser')[0]);
+        $.ajax({
+            url : url,
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            dataType: "JSON",
+
+            success: function(data)
+            {
+                Swal.fire({
+					icon: "success",
+					title: "Terima Kasih",
+					showConfirmButton: true,
+					timer: 1500
+				});
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+                alert('Error adding / update data');
+            }
+        });		
+	})
 </script>
-
-<!-- <script type="text/javascript">
-    document.getElementById('dp').addEventListener('change', function () {
-        var style = this.value == '1000000' ? 'block' : 'none';
-        document.getElementById('sisa').style.display = style;
-    });
-</script> -->
 
 <!-- DataTables -->
 <script src="<?= base_url() ?>assets/front-end/data/vendors/datatables.net/js/jquery.dataTables.min.js"></script>

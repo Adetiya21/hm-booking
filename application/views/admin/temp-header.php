@@ -75,7 +75,7 @@
                     <a class="mobile-menu" id="mobile-collapse" href="#!">
                         <i class="feather icon-menu"></i>
                     </a>
-                    <a href="index.html">
+                    <a href="<?= site_url('') ?>">
                         <img class="img-fluid" src="<?=base_url('assets/back-end/files/assets/images/logo.png') ?>" alt="Theme-Logo" />
                     </a>
                     <a class="mobile-options">
@@ -238,6 +238,17 @@
                                     </li>
                                 </ul>
                                 
+                            </li>
+                        </ul>
+
+						<ul class="pcoded-item pcoded-left-item">                               
+                            <li class="data-user">
+                                <a href="<?= site_url('admin/data-user') ?>" class="waves-effect waves-dark">
+                                    <span class="pcoded-micon">
+                                        <i class="feather icon-users"></i>
+                                    </span>
+                                    <span class="pcoded-mtext">User Akses Web</span>
+                                </a>
                             </li>
                         </ul>
                         

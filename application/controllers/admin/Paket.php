@@ -51,16 +51,33 @@ class Paket extends CI_Controller {
 				echo json_encode($data);
 				exit();
 			}else{
-				$data = array(
-					'nama' => $this->input->post('nama'),
-					'harga' => $this->input->post('harga'),
-					'layanan' => $this->input->post('layanan'),
-					'keterangan' => $this->input->post('keterangan'),
-					'jml_tim' => $this->input->post('jml_tim')
-				);
-				// fun tambah
-				$this->DButama->AddDB($this->table,$data);
-				echo json_encode(array("status" => TRUE));
+				$pr = $this->input->post('pr');
+				if ($pr=='ya') {
+					$data = array(
+						'nama' => $this->input->post('nama'),
+						'harga' => $this->input->post('harga'),
+						'promo' => $this->input->post('promo'),
+						'layanan' => $this->input->post('layanan'),
+						'keterangan' => $this->input->post('keterangan'),
+						'jml_tim' => $this->input->post('jml_tim'),
+						'status' => $this->input->post('status')
+					);
+					// fun tambah
+					$this->DButama->AddDB($this->table,$data);
+					echo json_encode(array("status" => TRUE));
+				} else {
+					$data = array(
+						'nama' => $this->input->post('nama'),
+						'harga' => $this->input->post('harga'),
+						'layanan' => $this->input->post('layanan'),
+						'keterangan' => $this->input->post('keterangan'),
+						'jml_tim' => $this->input->post('jml_tim'),
+						'status' => $this->input->post('status')
+					);
+					// fun tambah
+					$this->DButama->AddDB($this->table,$data);
+					echo json_encode(array("status" => TRUE));
+				}
 			}
 		}
 	}
@@ -93,16 +110,34 @@ class Paket extends CI_Controller {
 			$where  = array('id' => $this->input->post('id'));  //filter berdasarkan id
 			$query = $this->DButama->GetDBWhere($this->table,$where);
 			$row = $query->row();
-			$data = array(
-				'nama' => $this->input->post('nama'),
-				'harga' => $this->input->post('harga'),
-				'layanan' => $this->input->post('layanan'),
-				'keterangan' => $this->input->post('keterangan'),
-				'jml_tim' => $this->input->post('jml_tim')
-			);
-			// fun update
-			$this->DButama->UpdateDB($this->table,$where,$data);
-			echo json_encode(array("status" => TRUE));
+			$pr = $this->input->post('pr');
+			if ($pr=='ya') {
+				$data = array(
+					'nama' => $this->input->post('nama'),
+					'harga' => $this->input->post('harga'),
+					'promo' => $this->input->post('promo'),
+					'layanan' => $this->input->post('layanan'),
+					'keterangan' => $this->input->post('keterangan'),
+					'jml_tim' => $this->input->post('jml_tim'),
+					'status' => $this->input->post('status')
+				);
+				// fun update
+				$this->DButama->UpdateDB($this->table,$where,$data);
+				echo json_encode(array("status" => TRUE));
+			}else{
+				$data = array(
+					'nama' => $this->input->post('nama'),
+					'harga' => $this->input->post('harga'),
+					'layanan' => $this->input->post('layanan'),
+					'promo' => null,
+					'keterangan' => $this->input->post('keterangan'),
+					'jml_tim' => $this->input->post('jml_tim'),
+					'status' => $this->input->post('status')
+				);
+				// fun update
+				$this->DButama->UpdateDB($this->table,$where,$data);
+				echo json_encode(array("status" => TRUE));
+			}
 		}
 	}
 

@@ -1,4 +1,4 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+3<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
       $('.booking').addClass('active');
@@ -412,7 +412,10 @@
                                     <label >Nominal DP</label>
                                     <select name="dp" class="form-control" required />
                                         <option>--- Pilih Nominal DP ---</option>
+                                        <option value="350000">Rp 350.000</option>
+                                        <option value="400000">Rp 400.000</option>
                                         <option value="500000">Rp 500.000</option>
+                                        <option value="800000">Rp 800.000</option>
                                         <option value="1000000">Rp 1.000.000</option>
                                     </select>
                                     <span class="help-block"></span>

@@ -66,10 +66,17 @@
                                         <div class="form-group">
                                             <label>Paket</label><p style="font-weight: bold;">
                                                 <?php $total=0;
-                                                 foreach ($paket->result() as $key) {
+                                                foreach ($paket->result() as $key) {
                                                     if ($booking->id_paket==$key->id) { 
-                                                        $total=$key->harga;
-                                                        echo $key->nama.' (Rp '. rupiah($key->harga). ')'; }} ?></p>
+                                                        if ($key->promo==null) {
+                                                            $total=$key->harga;   
+                                                            echo $key->nama.' (Rp '. rupiah($key->harga). ')'; 
+                                                        } else {
+                                                            $total=$key->promo;
+                                                            echo $key->nama.' (Rp '. rupiah($key->promo). ')';
+                                                        }
+                                                    }
+                                                } ?></p>
                                         </div>
                                         <div class="form-group">
                                             <label>Nama Catin</label>

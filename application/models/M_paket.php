@@ -6,7 +6,7 @@ class M_paket extends CI_Model {
 	var $table = 'tb_paket';
 
 	public function json() {
-		$this->datatables->select('id, nama, harga, layanan, keterangan, jml_tim');
+		$this->datatables->select('id, nama, harga, layanan, keterangan, jml_tim, promo,status');
 		$this->datatables->from($this->table);
 		$this->datatables->add_column('view', '<div align="center">
 			<a class="btn btn-warning btn-rounded btn-sm" href="javascript:void(0)" title="Edit" onclick="edit($1)"> <span class="fa fa-edit"></span></a>

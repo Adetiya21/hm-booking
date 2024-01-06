@@ -23,9 +23,9 @@
         <div class="col-lg-3 col-md-3 col-sm-6">
           <div class="footer__widget">
             <div class="footer__social">
-              <a href="https://facebook.com/<?= $ten->fb; ?>" target="_blank"><i class="fa fa-facebook"></i></a>
-              <a href="https://instagram.com/<?= $ten->ig; ?>" target="_blank"><i class="fa fa-instagram"></i></a>
-              <a href="https://wa.me/<?= $ten->no_telp ?>" target="_blank"><i class="fa fa-phone"></i></a>
+              <a href="https://instagram.com/<?= $ten->ig ?>"><i class="fa fa-instagram"></i></a>
+              <a href="https://facebook.com/<?= $ten->fb ?>"><i class="fa fa-facebook"></i></a>
+              <a href="https://wa.me/<?= $ten->no_telp ?>"><i class="fa fa-phone"></i></a>
             </div>
           </div>
         </div>
@@ -33,20 +33,32 @@
       <div class="footer__copyright">
         <div class="row">
           <div class="col-lg-12 col-md-12 text-center">
-            <p class="footer__copyright__text">Copyright &copy;
+            <p class="footer__copyright__text">HM PROJECT ART &copy;
               <script>
               document.write(new Date().getFullYear());
-            </script> All rights reserved.
+            </script> PEJUANG MOMEN
           </p>
         </div>
       </div>
     </div>
   </div>
 </footer>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/614c7e4925797d7a89007695/1fg9cqk3v';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
 
-
-<script src="<?= base_url('assets/front-end/') ?>vendor/jquery/jquery-3.2.1.min.js"></script>
-<script src="<?= base_url('assets/front-end/') ?>vendor/animsition%2c_js%2c_animsition.min.js%2bbootstrap%2c_js%2c_popper.js.pagespeed.jc.EGBVPi81gr.js"></script>
+<!--<script src="<?= base_url('assets/front-end/') ?>vendor/jquery/jquery-3.2.1.min.js"></script>-->
+<script src="<?= base_url('assets/front-end/') ?>vendor/EGBVPi81gr.js"></script>
 <script>eval(mod_pagespeed_bqDY5MX4Eh);</script>
 <script>eval(mod_pagespeed_QRTAC8yf8T);</script>
 <script src="<?= base_url('assets/front-end/') ?>vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -56,7 +68,7 @@
 <script src="<?= base_url('assets/front-end/') ?>vendor/daterangepicker/moment.min.js"></script>
 <script src="<?= base_url('assets/front-end/') ?>vendor/daterangepicker/daterangepicker.js"></script>
 
-<script src="<?= base_url('assets/front-end/') ?>vendor%2c_slick%2c_slick.min.js%2bjs%2c_slick-custom.js%2bvendor%2c_parallax100%2c_parallax100.js.pagespeed.jc.Q6sHtKPwO4.js"></script>
+<script src="<?= base_url('assets/front-end/') ?>Q6sHtKPwO4.js"></script>
 <script>eval(mod_pagespeed_AI38xh_Ex0);</script>
 <script>eval(mod_pagespeed_qxY8wdaPPV);</script>
 <script>eval(mod_pagespeed_f_bH8KmdEi);</script>
@@ -64,7 +76,7 @@
 	$('.parallax100').parallax100();
 </script>
 
-<script src="<?= base_url('assets/front-end/') ?>vendor%2c_countdowntime%2c_countdowntime.js%2bvendor%2c_lightbox2%2c_js%2c_lightbox.min.js%2bjs%2c_main.js.pagespeed.jc.d4Qlt1x2nX.js"></script>
+<script src="<?= base_url('assets/front-end/') ?>d4Qlt1x2nX.js"></script>
 <script>eval(mod_pagespeed_ij2VRfOToQ);</script>
 
 <script>eval(mod_pagespeed_K19uUIjIBY);</script>

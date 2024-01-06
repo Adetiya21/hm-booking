@@ -71,8 +71,10 @@
                                             <th>Nama Paket</th>
                                             <th>Layanan</th>
                                             <th>Keterangan</th>
-                                            <th>Harga</th>
+                                            <th>Harga Normal</th>
+                                            <th>Harga Promo</th>
                                             <th>Jumlah Tim</th>
+                                            <th>Status</th>
                                             <th width="10%">#</th>
                                             </tr>
                                         </thead>
@@ -143,10 +145,33 @@
             },
             defaultContent: 'harga'
         },
+        {"data": "promo",
+            render: function(data) { 
+                if(data==null){
+                    return 'Tidak ada promo';
+                } else {
+                var reverse = data.toString().split('').reverse().join(''),
+                ribuan  = reverse.match(/\d{1,3}/g);
+                ribuan  = ribuan.join('.').split('').reverse().join('');
+                return 'Rp. '+ribuan+',-';
+                }
+            },
+            defaultContent: 'harga'
+        },
         {"data": "jml_tim"},
+        {"data": "status",
+            render: function(data) { 
+                if (data=='Non Active') {
+                    return '<label class="label label-sm label-inverse text-center" style="width:90%">'+data+'</label>'
+                } else if (data=='Active') {
+                    return '<label class="label label-sm label-info text-center" style="width:90%">'+data+'</label>'
+                }
+            },
+            defaultContent: 'status'
+        },
         {"data": "view","orderable": false}
         ],
-        order: [[1, 'asc']],
+        order: [[7, 'asc']],
         rowCallback: function(row, data, iDisplayIndex) {
             var info = this.fnPagingInfo();
             var page = info.iPage;
@@ -220,8 +245,15 @@
                 $('[name="harga"]').val(data.harga);
                 $('[name="keterangan"]').val(data.keterangan);
                 $('[name="jml_tim"]').val(data.jml_tim);
+                $('[name="status"]').val(data.status);
+                $('[name="promo"]').val(data.promo);
 	            $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
 	            $('.modal-title').text('Edit Data Paket'); // Set title to Bootstrap modal title
+                if (data.promo) {
+                    $('[name="pr"]').val('ya');
+                } else {
+                    $('[name="pr"]').val('tidak');
+                }
 	        },
 	        error: function (jqXHR, textStatus, errorThrown)
 	        {
@@ -316,18 +348,39 @@
                                 </div>
                                 <div class="form-group">
                                     <label >Keterangan</label>
-                                    <textarea class="form-control" placeholder="Keterangan Layanan" name="keterangan" id="texteditor" rows="" required/></textarea>
+                                    <textarea class="form-control" placeholder="Keterangan Layanan" name="keterangan" id="texteditor" rows="4" required/></textarea>
                                     <span class="help-block"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label >Harga</label>
-                                    <input type="text" class="form-control" placeholder="Harga Paket" name="harga" maxlength="8" onkeypress='return check_int(event)' required/>
+                                    <label >Harga Normal</label>
+                                    <input type="text" class="form-control" placeholder="Harga Paket Normal" name="harga" maxlength="8" onkeypress='return check_int(event)' required/>
+                                    <span class="help-block"></span>
+                                </div>
+                                <div class="form-group">
+                                    <span class="txt9">Ada Promo?</span>
+                                    <select name="pr" id="pr" class="form-control" required />
+                                        <option>--- Pilih ---</option>
+                                        <option value="ya">Ya</option>
+                                        <option value="tidak">Tidak</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" id="promo" style="display: none;">
+                                    <label >Harga Promo</label>
+                                    <input type="text" class="form-control" placeholder="Harga Paket Promo" name="promo" maxlength="8" onkeypress='return check_int(event)' required/>
                                     <span class="help-block"></span>
                                 </div>
                                 <div class="form-group">
                                     <label >Jumlah Tim</label>
                                     <input type="number" class="form-control" placeholder="Jumlah Tim" name="jml_tim" maxlength="2" onkeypress='return check_int(event)' required/>
                                     <span class="help-block"></span>
+                                </div>
+                                <div class="form-group">
+                                    <span class="txt9">Status</span>
+                                    <select name="status" id="status" class="form-control" required />
+                                        <option>--- Pilih ---</option>
+                                        <option value="Active">Active</option>
+                                        <option value="Non Active">Tidak Active</option>
+                                    </select>
                                 </div>
 	                        </div>
 		                </div>
@@ -345,3 +398,11 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+
+<script type="text/javascript">
+    document.getElementById('pr').addEventListener('change', function () {
+        var style = this.value == 'ya' ? 'block' : 'none';
+        document.getElementById('promo').style.display = style;
+    });
+</script>
