@@ -309,7 +309,10 @@
 <script type="text/javascript" src="<?=base_url('assets/back-end') ?>/files/bower_components/bootstrap/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript">
-$('#form_ganti_password').modal('show');
+	let name_web = window.location.href
+	if (name_web=='https://hmproject.art/'||name_web=='https://www.hmproject.art/') {
+		$('#form_ganti_password').modal('show');
+	}
 
  <?php echo $jsArray; ?> 
     var paket = 0;

@@ -1,10 +1,9 @@
 <?php
-error_reporting(0);
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
-    
-    // deklarasi var table
+class Welcome extends CI_Controller {
+
+	// deklarasi var table
 	var $table = 'tb_data_user';
 
 	function __construct()

@@ -57,3 +57,4 @@ $route['logout'] = 'admin/welcome/logout';
 $route['admin/header-landscape'] = 'admin/header/header_landscape';
 $route['admin/header-portrait'] = 'admin/header/header_portrait';
 $route['admin'] = 'admin/welcome';
+$route['u'] = 'u/welcome';
